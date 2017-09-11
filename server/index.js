@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const passport = require('passport');
+const mongoose = require('mongoose');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const BearerStrategy = require('passport-http-bearer').Strategy;
 
@@ -96,12 +97,20 @@ app.get(/^(?!\/api(\/|$))/, (req, res) => {
 });
 
 let server;
-function runServer(port=3001) {
-    return new Promise((resolve, reject) => {
-        server = app.listen(port, () => {
-            resolve();
-        }).on('error', reject);
+function runServer() {
+    let databaseUri = process.env.DATABASE_URI || global.databaseUri || 'mongodb://dev:dev@ds133094.mlab.com:33094/lang';
+    mongoose.Promise = global.Promise;
+    mongoose.connect(databaseUri).then(function() {
+     app.listen(8080, HOST, (err) => {
+
+        if (err) {
+            console.error(err);
+            return(err);
+        }
+        const host = HOST || 'localhost';
+        console.log(`Listening on ${host}:8080`);
     });
+ });
 }
 
 function closeServer() {
