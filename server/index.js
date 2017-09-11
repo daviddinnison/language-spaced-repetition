@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const passport = require('passport');
 const mongoose = require('mongoose');
+const { User } = require('./models');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const BearerStrategy = require('passport-http-bearer').Strategy;
 
@@ -25,7 +26,7 @@ passport.use(
         {
             clientID: secret.CLIENT_ID,
             clientSecret: secret.CLIENT_SECRET,
-            callbackURL: `/api/auth/google/callback`
+            callbackURL: '/api/auth/google/callback'
         },
         (accessToken, refreshToken, profile, cb) => {
             // Job 1: Set up Mongo/Mongoose, create a User model which store the
@@ -52,6 +53,17 @@ passport.use(
         return done(null, database[token]);
     })
 );
+
+app.get('/api/test', (req, res) => {
+    User.findOne()
+        .then(record => {
+            res.send(record);
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ message: 'Something went wrong' });
+        });
+});
 
 app.get(
     '/api/auth/google',
@@ -109,16 +121,24 @@ function runServer() {
         'mongodb://dev:dev@ds133094.mlab.com:33094/lang';
     mongoose.Promise = global.Promise;
     mongoose.connect(databaseUri).then(function() {
-        app.listen(8080, HOST, err => {
+        app.listen(3001, 'localhost', err => {
             if (err) {
                 console.error(err);
                 return err;
             }
-            const host = HOST || 'localhost';
-            console.log(`Listening on ${host}:8080`);
+            console.log('Listening on localhost:3001 (this is hard-coded)');
         });
     });
 }
+
+// app.listen(8080, HOST, err => {
+//     if (err) {
+//         console.error(err);
+//         return err;
+//     }
+//     const host = HOST || 'localhost';
+//     console.log(`Listening on ${host}:8080`);
+// });
 
 function closeServer() {
     return new Promise((resolve, reject) => {
