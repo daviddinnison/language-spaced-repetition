@@ -11,7 +11,7 @@ class App extends React.Component {
             currentUser: null
         };
     }
-
+ 
     componentDidMount() {
         // Job 4: Redux-ify all of the state and fetch calls to async actions.
         const accessToken = Cookies.get('accessToken');

@@ -1,13 +1,18 @@
 import React from 'react';
 import * as Cookies from 'js-cookie';
+import { connect } from 'react-redux';
 
-export default class QuestionPage extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            questions: []
-        };
-    }
+import Header from './header';
+
+import './styles/question-page.css';
+
+export class QuestionPage extends React.Component {
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         questions: []
+    //     };
+    // }
 
     componentDidMount() {
         const accessToken = Cookies.get('accessToken');
@@ -27,15 +32,44 @@ export default class QuestionPage extends React.Component {
         );
     }
 
+    makeGuess(event) {
+        event.preventDefault();
+        // this.props.dispatch(makeGuess(guess));
+        alert('you submitted something!')
+    }
     render() {
-        const questions = this.state.questions.map((question, index) =>
-            <li key={index}>{question}</li>
+        //this is the real function for mapping questions to state. paste this stuff into below function
+        const questions = this.state.questionsMessage.map((question, index) =>
+            <div className="question-container">
+                <span className="question-ask">Word in Croatian:</span>
+                <p key={index}>{question}</p>
+
+                <form className="guess-form" onSubmit={e => this.makeGuess(e)}>
+                    <input type="text" name="guess-input" placeholder="word in English"></input>
+                    <button type="submit" className="guess-button">Submit answer</button>
+                </form>
+            </div>
         );
 
+        //make a placeholder until the questions endpoint is working
+
+
+
         return (
-            <ul className="question-list">
-                {questions}
-            </ul>
+            <div className="question-page">
+                <Header/>
+                
+                <div className="question">
+                    {questions}
+                </div>
+            </div>
         );
     }
 }
+
+const mapStateToProps = state => ({
+    questionsMessage: state.questionsMessage
+  });
+
+export default connect(mapStateToProps)(QuestionPage);
+// export default QuestionPage;
