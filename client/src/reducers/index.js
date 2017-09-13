@@ -6,21 +6,21 @@ import {
     GET_QUESTIONS_REQUEST,
     GET_QUESTIONS_SUCCESS,
     GET_QUESTIONS_ERROR,
+    MAKE_GUESS
     
   } from "../actions";
   
   const initialState = {
     currentUser: 'david',  
-    questionsText: 'Is this is a question from the state? Yes.',
-    lastGuess: 'LAST GUESS IN ENGLISH',
-    answer: 'ANSWER IN CROATIAN'
+    wordToGuess: 'Kako se zoveš? ',
+    answer: 'Whats your name?'
   };
 
 
 export const mainReducer = (state=initialState, action) => {
 // export default (state, action) => {
     // state = state || initialState;
-        console.log(state, 'REDUCER')
+        // console.log(state, 'REDUCER')
             
         if (action.type === LOGIN_USER_REQUEST) {
             return {
@@ -71,25 +71,31 @@ export const mainReducer = (state=initialState, action) => {
               currentUser: '',
               loggedIn: false
             }
-        }   
+        }
         else if (action.type === GET_QUESTIONS_REQUEST) {
             return Object.assign({}, state, {
             // loading: true,
             error: null
             });
-        } 
+        }
         else if (action.type === GET_QUESTIONS_SUCCESS) {
             return Object.assign({}, state, {
             questions: action.questions,
             // loading: false,
             error: null
             });
-        } 
+        }
         else if (action.type === GET_QUESTIONS_ERROR) {
             return Object.assign({}, state, {
                 // loading: false,
             error: action.error
-        });
-    }
+            });
+        }
+        else if (action.type === MAKE_GUESS) {
+            return Object.assign({}, state, {
+                // loading: false,
+            answer: action.answer
+            });
+        }
     return state;
 }

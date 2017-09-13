@@ -1,11 +1,10 @@
 import React from 'react';
 import * as Cookies from 'js-cookie';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import Header from './header';
 
-import { getQuestionsRequest } from '../state/actions/actions';
+import { getQuestionsRequest, makeGuess } from '../actions';
 
 import './styles/question-page.css';
 
@@ -13,7 +12,8 @@ export class QuestionPage extends React.Component {
 
     componentDidMount() {
         this.props.dispatch(
-            getQuestionsRequest(this.props.questionsText)
+            
+            getQuestionsRequest(this.props.wordToGuess)
           );
         //comment back in auth stuff
         const accessToken = Cookies.get('accessToken');
@@ -36,45 +36,57 @@ export class QuestionPage extends React.Component {
 
     makeGuess(event) {
         event.preventDefault();
-        // this.props.dispatch(makeGuess(guess));
-        alert('you submitted something!')
+        let answer = this.userGuess.value;
+        console.log(answer)
+     
+        this.props.dispatch(makeGuess(answer));
     }
 
     render() {
         //this is the real function for mapping questions to state. paste this stuff into below function
-        const questions = this.state.questionsText.map((question, index) =>
-            <div className="question-container">
-                <span className="question-ask">Word in Croatian:</span>
-                <p key={index}>{question}</p>
+        // const questions = this.state.wordToGuess.map((question, index) =>
+        //     <div className="question-container">
+                // <span className="question-ask">Word in Croatian:</span>
+                // <p key={index}>{question}</p>
 
-                <form className="guess-form" onSubmit={e => this.makeGuess(e)}>
-                    <input type="text" name="guess-input" placeholder="word in English"></input>
-                    <button type="submit" className="guess-button">Submit answer</button>
-                </form>
-            </div>
-        );
+                // <form className="guess-form" onSubmit={e => this.makeGuess(e)}>
+                //     <input type="text" name="guess-input" placeholder="word in English"></input>
+                //     <button type="submit" className="guess-button">Submit answer</button>
+                // </form>
+        //     </div>
+        // );
+        
 
         //make a placeholder until the questions endpoint is working
 
-
+        
 
         return (
             <div className="question-page">
                 <Header/>
                 
-                <div className="question">
-                    {questions}
+                <div className="question-container">
+               
+                    <form className="guess-form" onSubmit={e => this.makeGuess(e)}>
+                        <label className="question-ask" htmlFor="userGuess">Word in Croatian: </label>
+                        <p>{this.props.wordToGuess}</p>
+
+                        <input type="text" name="guess-input" required placeholder="word in English" id="userGuess" ref={input => (this.userGuess = input)}></input>
+                        <button type="submit" className="guess-button">Submit answer</button>
+                    </form>
+                    {/* {questions} */}
                 </div>
             </div>
         );
     }
 }
 
-// const mapStateToProps = function (state){
-//     return {
-//         questionsText: state.questionsText
-//     }
-//   };
+const mapStateToProps = function (state){
+    return {
+        wordToGuess: state.wordToGuess,
+        answer: state.answer
+    }
+  };
 
-// export default connect(mapStateToProps)(QuestionPage);
+export default connect(mapStateToProps)(QuestionPage);
 // export default QuestionPage;

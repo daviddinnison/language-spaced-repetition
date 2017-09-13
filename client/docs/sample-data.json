@@ -1,0 +1,16 @@
+{
+    "questionsData":[
+        {"question":"Kako se zovete?", "answer":"What's your name?"},
+        {"question":"Bok", "answer":"Hi"}, 
+        {"question":"Dobar tek", "answer":"Have a nice meal"}, 
+        {"question":"Razumijem", "answer":"I understand"}, 
+        {"question":"Ne razumijem", "answer":"I don't understand"},
+        {"question":"Ispričavam se", "answer":"Excuse me"},
+        {"question":"Sretno", "answer":"Good luck"}, 
+        {"question":"Kako ste?", "answer":"How are you?"}, 
+        {"question":"Dobrodošli", "answer":"Welcome"}, 
+        {"question":"Doviđenja", "answer":"Goodbye"},
+        {"question":"Uzdravlje!", "answer":"Cheers"},  
+        {"question":"Molim", "answer":"Please"}
+    ]
+}

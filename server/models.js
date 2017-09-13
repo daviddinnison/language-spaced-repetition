@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 // this is our schema to represent a restaurant
 const userSchema = mongoose.Schema({
-    username: { type: String, required: true },
+    currentUser: { type: String, required: true },
     authToken: { type: String, required: true }
 });
 

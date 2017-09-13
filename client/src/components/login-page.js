@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
-import { loginUserRequest } from '../state/actions/actions';
+import { loginUserRequest } from '../actions';
 
 import './styles/login-page.css';
 
@@ -26,19 +25,19 @@ export class LoginPage extends React.Component {
                 <h1>Learn Croatian</h1>
                 <h2>Pick up a new skill with repetition</h2>
             </div>
-            {/* <form action={'/api/auth/google'} onSubmit={e => this.loginSubmit(e)}> */}
-            <form onSubmit={e => this.loginSubmit(e)}>
+            <a href={'/api/auth/google'}>Login with Google</a>;
+            {/* <form onSubmit={e => this.loginSubmit(e)}>
                 <input className="login-button" type="submit" value="Go to Google" />
-            </form>
+            </form> */}
         </div>
         );
     }
 }
 
-// const mapStateToProps = function(state){
-//     return {
-//         currentUser: state.currentUser
-//     }
-// };
+const mapStateToProps = function(state){
+    return {
+        currentUser: state.currentUser
+    }
+};
 
-// export default connect(mapStateToProps)(LoginPage);
+export default connect(mapStateToProps)(LoginPage);
