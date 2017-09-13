@@ -1,0 +1,20 @@
+.question-container {
+    border: 1px solid black;
+    margin: 50px auto;
+    padding-top: 40px;
+    text-align: center;
+    width: 50%;
+}
+
+.question-ask {
+    font-weight: bold;
+}
+
+.guess-button {
+    background-color: #46C646;
+    display: block;
+    color: white;
+    margin: 20px auto;
+    padding: 10px;
+    width: 300px;
+}
