@@ -1,20 +1,21 @@
 import React from 'react';
 import * as Cookies from 'js-cookie';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Header from './header';
+
+import { getQuestionsRequest } from '../state/actions/actions';
 
 import './styles/question-page.css';
 
 export class QuestionPage extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         questions: []
-    //     };
-    // }
 
     componentDidMount() {
+        this.props.dispatch(
+            getQuestionsRequest(this.props.questionsText)
+          );
+        //comment back in auth stuff
         const accessToken = Cookies.get('accessToken');
         fetch('/api/questions', {
                 headers: {
@@ -30,6 +31,7 @@ export class QuestionPage extends React.Component {
                 questions
             })
         );
+
     }
 
     makeGuess(event) {
@@ -37,9 +39,10 @@ export class QuestionPage extends React.Component {
         // this.props.dispatch(makeGuess(guess));
         alert('you submitted something!')
     }
+
     render() {
         //this is the real function for mapping questions to state. paste this stuff into below function
-        const questions = this.state.questionsMessage.map((question, index) =>
+        const questions = this.state.questionsText.map((question, index) =>
             <div className="question-container">
                 <span className="question-ask">Word in Croatian:</span>
                 <p key={index}>{question}</p>
@@ -67,9 +70,11 @@ export class QuestionPage extends React.Component {
     }
 }
 
-const mapStateToProps = state => ({
-    questionsMessage: state.questionsMessage
-  });
+// const mapStateToProps = function (state){
+//     return {
+//         questionsText: state.questionsText
+//     }
+//   };
 
-export default connect(mapStateToProps)(QuestionPage);
+// export default connect(mapStateToProps)(QuestionPage);
 // export default QuestionPage;

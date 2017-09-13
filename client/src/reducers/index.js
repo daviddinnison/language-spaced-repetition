@@ -7,7 +7,7 @@ import {
     GET_QUESTIONS_SUCCESS,
     GET_QUESTIONS_ERROR,
     
-  } from "../actions/actions";
+  } from "../actions";
   
   const initialState = {
     currentUser: 'david',  

@@ -14,7 +14,7 @@ export class Header extends React.Component {
   }
   
 //   const mapStateToProps = state => ({
-//     username: state.username,
+//     currentUser: state.currentUser,
 //     loggedIn: state.loggedIn
 //   });
   

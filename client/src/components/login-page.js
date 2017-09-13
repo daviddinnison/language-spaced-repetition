@@ -9,9 +9,9 @@ import './styles/login-page.css';
 export class LoginPage extends React.Component {
     componentDidMount() {
         this.props.dispatch(
-          loginUserRequest(this.props.username)
+          loginUserRequest(this.props.currentUser)
         );
-      }
+    }
     
     loginSubmit(event) {
         event.preventDefault();
@@ -19,6 +19,7 @@ export class LoginPage extends React.Component {
         // /api/auth/google
     }
     render() {
+        // console.log(state, 'THIS IS THE STATE IN LOGIN PAGE')
         return ( 
         <div className="login-page">
             <div className="landing-header">
@@ -34,11 +35,10 @@ export class LoginPage extends React.Component {
     }
 }
 
-const mapStateToProps = function(state){
-    console.log(state, 'state')
-    return {
-       //  username: state.username
-    }
-};
+// const mapStateToProps = function(state){
+//     return {
+//         currentUser: state.currentUser
+//     }
+// };
 
-export default connect(mapStateToProps)(LoginPage);
+// export default connect(mapStateToProps)(LoginPage);
