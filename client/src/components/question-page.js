@@ -19,9 +19,9 @@ export class QuestionPage extends React.Component {
         //comment back in auth stuff
         const accessToken = Cookies.get('accessToken');
         fetch('/api/questions', {
-                headers: {
-                    'Authorization': `Bearer ${accessToken}`
-                }
+                // headers: {
+                //     'Authorization': `Bearer ${accessToken}`
+                // }
             }).then(res => {
             if (!res.ok) {
                 throw new Error(res.statusText);
@@ -41,13 +41,13 @@ export class QuestionPage extends React.Component {
         console.log(userGuess)
         //CHECK ANSWER WITH CORRECT ANSWER IN STATE AND SEND BOOLEAN BACK TO SERVER
         if (userGuess === this.props.answer) {
-            // alert ('you got it!')
+            alert ('you got it!')
             //SEND TRUE TO SERVER
             //ROUTE TO CORRECT ANSWER PAGE
             //GET NEXT QUESTION
             
         } else {
-            // alert('nope')
+            alert('nope')
             //SEND FALSE
             //ROUTE TO CORRECT ANSWER PAGE
             //GET NEXT QUESTION

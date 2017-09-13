@@ -43,15 +43,15 @@ export const makeGuess = guess => ({
 });
 
 // export const fetchSessions = (currentUser, password) => dispatch => {
-//     const credentials = `${currentUser}:${password}`;
-//     const encodedAuthHeader = btoa(credentials);
-//     const authString = `Basic ${encodedAuthHeader}`;
+//     // const credentials = `${currentUser}:${password}`;
+//     // const encodedAuthHeader = btoa(credentials);
+//     // const authString = `Basic ${encodedAuthHeader}`;
   
 //     const opts = {
 //       headers: {
 //         Accept: 'application/json',
 //         'Content-Type': 'application/json',
-//         Authorization: authString
+//         // Authorization: authString
 //       },
 //       method: 'GET'
 //     };
