@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
-// this is our schema to represent a restaurant
 const userSchema = mongoose.Schema({
-    username: { type: String, required: true },
-    authToken: { type: String, required: true }
+    googleId: { type: String, required: true },
+    accessToken: { type: String, required: true },
+    displayName: { type: String }
 });
 
 const questionSchema = mongoose.Schema({
@@ -14,4 +14,4 @@ const questionSchema = mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 // const Question = mongoose.model('test', questionSchema);
 
-module.exports = {User};
+module.exports = { User };
