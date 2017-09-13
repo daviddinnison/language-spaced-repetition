@@ -56,7 +56,7 @@ export class QuestionPage extends React.Component {
 
         // this.props.dispatch(makeGuess(answer));
     }
-
+    
     render() {        
         return (
             <div className="question-page">
