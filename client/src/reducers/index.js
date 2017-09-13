@@ -12,7 +12,7 @@ import {
   
   const initialState = {
     currentUser: 'david',  
-    wordToGuess: 'Kako se zoveš? ',
+    question: 'Kako se zoveš? ',
     answer: 'Whats your name?'
   };
 

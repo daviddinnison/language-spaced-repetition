@@ -14,7 +14,7 @@ export class QuestionPage extends React.Component {
         this.props.dispatch(
             
             //GET QUESTIONS
-            getQuestionsRequest(this.props.wordToGuess)
+            getQuestionsRequest(this.props.question)
           );
         //comment back in auth stuff
         const accessToken = Cookies.get('accessToken');
@@ -57,18 +57,41 @@ export class QuestionPage extends React.Component {
         // this.props.dispatch(makeGuess(answer));
     }
     
+    renderQuestions() {
+        if (typeof this.props.answer === 'string') {
+            // return <Spinner spinnerName="circle" noFadeIn />;
+            return (
+            <div className="question-container">
+                <form className="guess-form" onSubmit={e => this.makeGuess(e)}>
+                    <label className="question-ask" htmlFor="userGuess">Word in Croatian: </label>
+                    <p>{this.props.question}</p>
+                    <input type="text" name="guess-input" required placeholder="word in English" id="userGuess" ref={input => (this.userGuess = input)}></input>
+                    <button type="submit" className="guess-button">Submit answer</button>
+                </form>
+            </div>
+            );
+        }
+        if (this.props.answer === true) {
+            return (
+                <div className="question-container">
+                    <h1>correct</h1>
+                </div>
+                );
+        }
+        if (this.props.answer === false) {
+            return (
+                <div className="question-container">
+                    <h1>incorrect</h1>
+                </div>
+                );
+        }
+    }
+
     render() {        
         return (
             <div className="question-page">
                 <Header/>
-                <div className="question-container">
-                    <form className="guess-form" onSubmit={e => this.makeGuess(e)}>
-                        <label className="question-ask" htmlFor="userGuess">Word in Croatian: </label>
-                        <p>{this.props.wordToGuess}</p>
-                        <input type="text" name="guess-input" required placeholder="word in English" id="userGuess" ref={input => (this.userGuess = input)}></input>
-                        <button type="submit" className="guess-button">Submit answer</button>
-                    </form>
-                </div>
+                {this.renderQuestions()}
             </div>
         );
     }
@@ -76,7 +99,7 @@ export class QuestionPage extends React.Component {
 
 const mapStateToProps = function (state){
     return {
-        wordToGuess: state.wordToGuess,
+        question: state.question,
         answer: state.answer
     }
   };

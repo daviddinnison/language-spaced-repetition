@@ -110,15 +110,12 @@ app.get(
 
 app.get(
     '/api/questions',
-    passport.authenticate('bearer', { session: false }),
+    //auth
+    // passport.authenticate('bearer', { session: false }),
     (req, res) => {
         Question.find()
             .then(questions => {
-                const questionList = questions.map(question => ({
-                    question: question.question,
-                    answer: question.answer
-                }));
-                return questionList;
+                return questions[0].questionsData;
             })
             .then(questions => res.json(questions))
             .catch(err => console.error(err));
