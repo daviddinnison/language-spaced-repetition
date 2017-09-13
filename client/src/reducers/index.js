@@ -26,60 +26,70 @@ export const mainReducer = (state=initialState, action) => {
             return {
               ...state,
             };
-        }   else if (action.type === LOGIN_USER_SUCCESS) {
+        }
+        else if (action.type === LOGIN_USER_SUCCESS) {
             return {
               users: [...state.users, action.users],
               loading: false,
               error: null
             };
-        }   else if (action.type === LOGIN_USER_ERROR) {
+        }   
+        else if (action.type === LOGIN_USER_ERROR) {
             return {
               loading: false,
               error: action.message
             };
-        }   else if (action.type === LOGOUT_USER) {
+        } 
+        else if (action.type === LOGOUT_USER) {
             return {
               currentUser: null,
               loggedIn: false
             }; 
-        }   else if (action.type === LOGIN_USER_REQUEST) {
+        }   
+        else if (action.type === LOGIN_USER_REQUEST) {
             return {
               ...state,
               display: "setPomo"
             };
-        }   else if (action.type === LOGIN_USER_SUCCESS) {
+        }   
+        else if (action.type === LOGIN_USER_SUCCESS) {
             return {
               users: [...state.users, action.users],
               display: "setPomo",
               loading: false,
               error: null
             };
-        }   else if (action.type === LOGIN_USER_ERROR) {
+        }
+        else if (action.type === LOGIN_USER_ERROR) {
             return {
               loading: false,
               error: action.message
             } 
-        }   else if (action.type === LOGOUT_USER) {
+        }   
+        else if (action.type === LOGOUT_USER) {
             return {
               currentUser: '',
               loggedIn: false
             }
-        }   else if (action.type === GET_QUESTIONS_REQUEST) {
+        }   
+        else if (action.type === GET_QUESTIONS_REQUEST) {
             return Object.assign({}, state, {
             // loading: true,
             error: null
             });
-        } else if (action.type === GET_QUESTIONS_SUCCESS) {
+        } 
+        else if (action.type === GET_QUESTIONS_SUCCESS) {
             return Object.assign({}, state, {
             questions: action.questions,
             // loading: false,
             error: null
             });
-        } else if (action.type === GET_QUESTIONS_ERROR) {
+        } 
+        else if (action.type === GET_QUESTIONS_ERROR) {
             return Object.assign({}, state, {
                 // loading: false,
             error: action.error
         });
+    }
     return state;
-  };
 }
