@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const passport = require('passport');
 const mongoose = require('mongoose');
-const { User } = require('./models');
+const { User, Question } = require('./models');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const BearerStrategy = require('passport-http-bearer').Strategy;
 
@@ -76,17 +76,6 @@ passport.use(
     })
 );
 
-app.get('/api/test', (req, res) => {
-    User.findOne()
-        .then(record => {
-            res.send(record);
-        })
-        .catch(err => {
-            console.error(err);
-            res.status(500).json({ message: 'Something went wrong' });
-        });
-});
-
 app.get(
     '/api/auth/google',
     passport.authenticate('google', { scope: ['profile'] })
@@ -122,7 +111,18 @@ app.get(
 app.get(
     '/api/questions',
     passport.authenticate('bearer', { session: false }),
-    (req, res) => res.json(['Question 1', 'Question 2'])
+    (req, res) => {
+        Question.find()
+            .then(questions => {
+                const questionList = questions.map(question => ({
+                    question: question.question,
+                    answer: question.answer
+                }));
+                return questionList;
+            })
+            .then(questions => res.json(questions))
+            .catch(err => console.error(err));
+    }
 );
 
 // Serve the built client
