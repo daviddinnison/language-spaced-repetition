@@ -12,6 +12,6 @@ const questionSchema = mongoose.Schema({
 });
 
 const User = mongoose.model('User', userSchema);
-// const Question = mongoose.model('test', questionSchema);
+const Question = mongoose.model('Question', questionSchema);
 
-module.exports = { User };
+module.exports = { User, Question };
