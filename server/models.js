@@ -7,8 +7,10 @@ const userSchema = mongoose.Schema({
 });
 
 const questionSchema = mongoose.Schema({
-    question: { type: String, required: true },
-    answer: { type: String, required: true }
+    wordToGuess: { type: String, required: true },
+    answer: { type: String, required: true },
+    nValue: { type: Number, required: true },
+    position: { type: Number, required: true }
 });
 
 const User = mongoose.model('User', userSchema);
