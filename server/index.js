@@ -11,13 +11,11 @@ let secret = {
     CLIENT_SECRET: process.env.CLIENT_SECRET
 };
 
-if (process.env.NODE_ENV != 'production') {
+if (process.env.NODE_ENV !== 'production') {
     secret = require('./secret');
 }
 
 const app = express();
-
-const database = {};
 
 app.use(passport.initialize());
 
@@ -29,28 +27,52 @@ passport.use(
             callbackURL: '/api/auth/google/callback'
         },
         (accessToken, refreshToken, profile, cb) => {
-            // Job 1: Set up Mongo/Mongoose, create a User model which store the
-            // google id, and the access token
-            // Job 2: Update this callback to either update or create the user
-            // so it contains the correct access token
-            const user = (database[accessToken] = {
-                googleId: profile.id,
-                accessToken: accessToken
-            });
-            return cb(null, user);
+            User.findOne({ googleId: profile.id })
+                .then(isUser => {
+                    if (isUser) {
+                        User.findOneAndUpdate(
+                            { googleId: profile.id },
+                            { accessToken },
+                            { new: true }
+                        ).then(updatedUser => {
+                            const user = {
+                                googleId: updatedUser.googleId,
+                                accessToken: updatedUser.accessToken
+                            };
+                            return cb(null, user);
+                        });
+                    } else {
+                        User.create({
+                            googleId: profile.id,
+                            accessToken,
+                            displayName: profile.displayName
+                        }).then(newUser => {
+                            const user = {
+                                googleId: newUser.googleId,
+                                accessToken: newUser.accessToken
+                            };
+                            return cb(null, user);
+                        });
+                    }
+                })
+                .catch(err => console.error(err));
         }
     )
 );
 
 passport.use(
     new BearerStrategy((token, done) => {
-        // Job 3: Update this callback to try to find a user with a
-        // matching access token.  If they exist, let em in, if not,
-        // don't.
-        if (!(token in database)) {
-            return done(null, false);
-        }
-        return done(null, database[token]);
+        User.findOne({ accessToken: token }).then(result => {
+            if (result === null) {
+                return done(null, false);
+            } else {
+                const user = {
+                    googleId: result.googleId,
+                    accessToken: result.accessToken
+                };
+                return done(null, user);
+            }
+        });
     })
 );
 
@@ -121,24 +143,15 @@ function runServer() {
         'mongodb://dev:dev@ds133094.mlab.com:33094/lang';
     mongoose.Promise = global.Promise;
     mongoose.connect(databaseUri).then(function() {
-        app.listen(3001, 'localhost', err => {
+        app.listen(3001, err => {
             if (err) {
                 console.error(err);
                 return err;
             }
-            console.log('Listening on localhost:3001 (this is hard-coded)');
+            console.log('Listening on localhost:3001');
         });
     });
 }
-
-// app.listen(8080, HOST, err => {
-//     if (err) {
-//         console.error(err);
-//         return err;
-//     }
-//     const host = HOST || 'localhost';
-//     console.log(`Listening on ${host}:8080`);
-// });
 
 function closeServer() {
     return new Promise((resolve, reject) => {
