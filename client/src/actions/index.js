@@ -57,6 +57,7 @@ export const fetchQuestions = () => dispatch => {
     };
   
     dispatch(getQuestionsRequest());
+    
     return fetch('/api/questions/', opts)
       .then(res => {
         if (!res.ok) {
