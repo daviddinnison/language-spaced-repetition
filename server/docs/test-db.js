@@ -43,10 +43,9 @@ module.exports = {
     closeServer
 };
 
-// ask joe/tauhida about this
 // const isUser = googleId => {
 //     let check;
-//     User.findOne({ googleId: googleId })
+//     return User.findOne({ googleId: googleId })
 //         .then(result => {
 //             if (result) {
 //                 return true;
