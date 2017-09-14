@@ -14,7 +14,8 @@ const initialState = {
     wordToGuess: null,
     answer: null,
     loading: false,
-    error: null
+    error: null,
+    questions: null
 };
 
 export const mainReducer = (state = initialState, action) => {
@@ -23,7 +24,7 @@ export const mainReducer = (state = initialState, action) => {
     } else if (action.type === LOGIN_USER_SUCCESS) {
         return Object.assign({}, state, {
             currentUser: action.userId,
-            loading: false // does this need to be here?
+            loading: false // does this need to be here? update all depending on joe's response
         });
     } else if (action.type === LOGIN_USER_ERROR) {
         return Object.assign({}, state, {
@@ -36,20 +37,16 @@ export const mainReducer = (state = initialState, action) => {
             loggedIn: false
         };
     } else if (action.type === GET_QUESTIONS_REQUEST) {
-        return Object.assign({}, state, {
-            // loading: true,
-            error: null
-        });
+        return Object.assign({}, state, { loading: true });
     } else if (action.type === GET_QUESTIONS_SUCCESS) {
         return Object.assign({}, state, {
             questions: action.questions,
-            // loading: false,
-            error: null
+            loading: false
         });
     } else if (action.type === GET_QUESTIONS_ERROR) {
         return Object.assign({}, state, {
-            // loading: false,
-            error: action.error
+            loading: false,
+            error: action.message
         });
     } else if (action.type === MAKE_GUESS) {
         return Object.assign({}, state, {

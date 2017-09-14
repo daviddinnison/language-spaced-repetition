@@ -34,9 +34,9 @@ export const getQuestionsSuccess = questions => ({
 });
 
 export const GET_QUESTIONS_ERROR = 'GET_QUESTIONS_ERROR';
-export const getQuestionsError = error => ({
+export const getQuestionsError = message => ({
     type: GET_QUESTIONS_ERROR,
-    error
+    message
 });
 
 export const MAKE_GUESS = 'MAKE_GUESS';
@@ -67,5 +67,26 @@ export const logUserIn = accessToken => dispatch => {
         })
         .catch(err => {
             dispatch(loginUserError(err));
+        });
+};
+
+export const getQuestions = accessToken => dispatch => {
+    dispatch(getQuestionsRequest());
+    fetch('/api/questions', {
+        headers: {
+            Authorization: `Bearer ${accessToken}`
+        }
+    })
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(res.statusText);
+            }
+            return res.json();
+        })
+        .then(questions => {
+            dispatch(getQuestionsSuccess(questions));
+        })
+        .catch(err => {
+            dispatch(getQuestionsError(err));
         });
 };

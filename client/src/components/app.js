@@ -17,14 +17,15 @@ class App extends React.Component {
     }
 
     render() {
-        // if (!this.state.currentUser) {
-        //     return <LoginPage />;
-        // }
-        // return <QuestionPage />;
-        return <LoginPage />;
+        if (!this.props.currentUser) {
+            return <LoginPage />;
+        }
+        return <QuestionPage />;
     }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+    currentUser: state.currentUser
+});
 
 export default connect(mapStateToProps)(App);

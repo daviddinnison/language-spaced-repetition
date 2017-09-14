@@ -43,22 +43,15 @@ module.exports = {
     closeServer
 };
 
-// const isUser = googleId => {
-//     let check;
-//     return User.findOne({ googleId: googleId })
-//         .then(result => {
-//             if (result) {
-//                 return true;
-//             } else {
-//                 return false;
-//             }
-//         })
-//         .then(result => {
-//             check = result;
-//         })
-//         .catch(err => console.error(err));
+Question.find()
+    .then(questions => {
+        // console.log('LOOK HERE', questions[0].questionsData);
 
-//     return check;
-// };
+        return questions[0].questionsData[0];
+    })
+    .then(questions => {
+        console.log(questions);
+    })
+    .catch(err => console.error(err));
 
-// console.log('======', isUser('yeah'));
+// console.log(JSON.stringify(test.questionsData.length, null, 2));

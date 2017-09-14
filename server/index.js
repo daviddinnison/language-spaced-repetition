@@ -114,10 +114,13 @@ app.get(
     (req, res) => {
         Question.find()
             .then(questions => {
-                const questionList = questions.map(question => ({
-                    question: question.question,
-                    answer: question.answer
-                }));
+                console.log(questions[0].keys)
+                const questionList = questions.map(
+                    question => ({
+                        question: question.question,
+                        answer: question.answer
+                    })
+                );
                 return questionList;
             })
             .then(questions => res.json(questions))
