@@ -4,34 +4,29 @@ import { connect } from 'react-redux';
 
 import Header from './header';
 
-import { fetchQuestions, makeGuess } from '../actions';
+import { getQuestions, makeGuess } from '../actions';   
 
 import './styles/question-page.css';
 
 export class QuestionPage extends React.Component {
+    constructor(props) {
+        super(props);
+    }
 
     componentDidMount() {
-
         console.log(this.props.questionsData, 'questionsData---------------------')
-        this.props.dispatch(fetchQuestions(this.props.questionsData));
         console.log(this.props.questionsData[0].answer, 'questionsData answer')
-        //comment back in auth stuff
-        // const accessToken = Cookies.get('accessToken');
-        // fetch('/api/questions', {
-        //         // headers: {
-        //         //     'Authorization': `Bearer ${accessToken}`
-        //         // }
-        //     }).then(res => {
-        //     if (!res.ok) {
-        //         throw new Error(res.statusText);
-        //     }
-        //     return res.json();
-        // }).then(questions =>
-        //     this.setState({
-        //         questions
-        //     })
-        // );
+        const accessToken = Cookies.get('accessToken');
+        this.props.dispatch(getQuestions(accessToken));
+    }
 
+    render() {
+        // const questions = this.state.questions.map((question, index) => (
+        //     <li key={index}>{question}</li>
+        // ));
+
+        // return <ul className="question-list">{questions}</ul>;
+        return <p>hello</p>;
     }
 
     makeGuess(event) {
@@ -102,15 +97,21 @@ export class QuestionPage extends React.Component {
                 {this.renderQuestions()}
             </div>
         );
+    
+        let answer = this.userGuess.value;
+        console.log(answer);
+
+        this.props.dispatch(makeGuess(answer));
     }
+
 }
 
-const mapStateToProps = function (state){
+const mapStateToProps = function(state) {
     return {
         currentUser: state.currentUser,
         questionsData: state.questionsData,
         answer: state.answer
-    }
-  };
+    };
+};
 
 export default connect(mapStateToProps)(QuestionPage);

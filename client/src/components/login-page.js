@@ -5,13 +5,7 @@ import { loginUserRequest } from '../actions';
 
 import './styles/login-page.css';
 
-export class LoginPage extends React.Component {
-    componentDidMount() {
-        this.props.dispatch(
-          loginUserRequest(this.props.currentUser)
-        );
-    }
-    
+export class LoginPage extends React.Component {    
     loginSubmit(event) {
         event.preventDefault();
         this.props.dispatch(loginUserRequest());
