@@ -120,4 +120,4 @@ function printList(head) {
         console.log();
 }
 
-let questionList = new LinkedList();
+let questionList = new LinkedList();\
