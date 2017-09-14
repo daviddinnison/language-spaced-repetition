@@ -1,11 +1,8 @@
+const obj1 = {
+    loading: false,
+    name: 'mike'
+};
 
+const newObj = Object.assign({}, obj1, { loading: true, name: 'biff' });
 
-const test = () => {
-    const poo = 5;
-
-    if (true) {
-        console.log('here')
-    }
-}
-
-test();
+console.log(newObj);
