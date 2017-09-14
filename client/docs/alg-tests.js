@@ -121,3 +121,24 @@ function printList(head) {
 }
 
 let questionList = new LinkedList();
+
+
+
+//BACKEND
+    //get questions
+    //put them in user document
+    //get questions from user doc into linked lsit
+
+//QUESTIONS----------------------
+
+//when get request is made, should insert each element into list in order of position
+    //adds currentQuestion and correctAnswer: null keys
+    //if position 1, make current question = true. everything else is false. current question true means this is what will be displayed
+
+//if question answered correct (correctAnswer:true)
+    // make the position shift to the last node + 1 and double nValue (maybe display as multiplier on front end?)
+
+//if question answered incorrect (correctAnswer: false)
+    // make the position shift + 2 and double nValue (maybe display as multiplier on front end?), move others behind it position + 1
+
+//.next method will mark the next position as currentQuestion: true and display
