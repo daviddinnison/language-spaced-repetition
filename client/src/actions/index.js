@@ -42,32 +42,32 @@ export const makeGuess = guess => ({
   guess
 });
 
-// export const fetchSessions = (currentUser, password) => dispatch => {
-//     // const credentials = `${currentUser}:${password}`;
-//     // const encodedAuthHeader = btoa(credentials);
-//     // const authString = `Basic ${encodedAuthHeader}`;
+export const fetchQuestions = () => dispatch => {
+    // const credentials = `${currentUser}:${password}`;
+    // const encodedAuthHeader = btoa(credentials);
+    // const authString = `Basic ${encodedAuthHeader}`;
   
-//     const opts = {
-//       headers: {
-//         Accept: 'application/json',
-//         'Content-Type': 'application/json',
-//         // Authorization: authString
-//       },
-//       method: 'GET'
-//     };
+    const opts = {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        // Authorization: authString
+      },
+      method: 'GET'
+    };
   
-//     dispatch(getSessionsRequest());
-//     return fetch('/api/sessions/', opts)
-//       .then(res => {
-//         if (!res.ok) {
-//           return Promise.reject(res.statusText);
-//         }
-//         return res.json();
-//       })
-//       .then(sessions => {
-//         return dispatch(getSessionsSuccess(sessions));
-//       })
-//       .catch(err => {
-//         dispatch(getSessionsError(err));
-//       });
-//   };
+    dispatch(getQuestionsRequest());
+    return fetch('/api/questions/', opts)
+      .then(res => {
+        if (!res.ok) {
+          return Promise.reject(res.statusText);
+        }
+        return res.json();
+      })
+      .then(questions => {
+        return dispatch(getQuestionsSuccess(questions));
+      })
+      .catch(err => {
+        dispatch(getQuestionsError(err));
+      });
+  };

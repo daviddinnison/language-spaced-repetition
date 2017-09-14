@@ -108,6 +108,7 @@ app.get(
         })
 );
 
+
 app.get(
     '/api/questions',
     //auth
@@ -115,12 +116,29 @@ app.get(
     (req, res) => {
         Question.find()
             .then(questions => {
+                console.log(questions[0].questionsData)
                 return questions[0].questionsData;
             })
             .then(questions => res.json(questions))
             .catch(err => console.error(err));
     }
 );
+
+//previous questions get method
+// app.get(
+//     '/api/questions',
+//     //auth
+//     // passport.authenticate('bearer', { session: false }),
+//     (req, res) => {
+//         Question.find()
+//             .then(questions => {
+//                 // console.log(questions[0].questionsData)
+//                 return questions[0].questionsData;
+//             })
+//             .then(questions => res.json(questions))
+//             .catch(err => console.error(err));
+//     }
+// );
 
 // Serve the built client
 app.use(express.static(path.resolve(__dirname, '../client/build')));

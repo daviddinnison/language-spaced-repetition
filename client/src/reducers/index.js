@@ -9,12 +9,30 @@ import {
     MAKE_GUESS
     
   } from "../actions";
-  
+
   const initialState = {
     currentUser: 'david',  
-    question: 'Kako se zoveš? ',
-    answer: 'Whats your name?'
+    questionsData: [{
+        question: 'the answer is hi',
+        answer: 'hi',
+        nValue: 1,
+        position: 1
+    },
+    {
+        question: 'the answer is bye',
+        answer: 'hi',
+        nValue: 1,
+        position: 2
+    }]
   };
+
+//   const initialState = {
+//     currentUser: 'david',  
+//     question: [
+//         'Kako se zovete?',
+//     'something else'],
+//     answer: 'Whats your name?'
+//   };
 
 
 export const mainReducer = (state=initialState, action) => {
