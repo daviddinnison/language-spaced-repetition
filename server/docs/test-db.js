@@ -45,12 +45,7 @@ module.exports = {
 
 Question.find()
     .then(questions => {
-        // console.log('LOOK HERE', questions[0].questionsData);
-
-        return questions[0].questionsData[0];
-    })
-    .then(questions => {
-        console.log(questions);
+        console.log('LOOK HERE', questions[0].questionsData);
     })
     .catch(err => console.error(err));
 
