@@ -115,9 +115,9 @@ app.get(
 
 app.get(
     '/api/questions',
-    // passport.authenticate('bearer', { session: false }),
+    passport.authenticate('bearer', { session: false }),
     (req, res) => {
-        User.find({ googleId: '110530375003272794045' })
+        User.find({ googleId: req.user.googleId })
             .then(user => {
                 return user[0].questions;
             })
@@ -129,13 +129,13 @@ app.get(
                         })
                         .then(questionArray => {
                             return User.findOneAndUpdate(
-                                { googleId: '110530375003272794045' },
+                                { googleId: req.user.googleId },
                                 { questions: questionArray },
                                 { new: true }
                             );
                         });
                 } else {
-                    return User.find({ googleId: '110530375003272794045' });
+                    return User.find({ googleId: req.user.googleId });
                 }
             })
             .then(result => {
