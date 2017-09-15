@@ -16,17 +16,17 @@ class LinkedList {
         if (nthPosition == 0) {
             newNode.next = this.head;
             this.head = newNode;
-            newNode.value.correctAnswer = null;
             newNode.value.currentQuestion = true;
             newNode.value.testProperty = null;
+            newNode.value.correctAnswer = null;
         } else {
             // Find the node which we want to insert after
             const node = this._findNthElement(nthPosition - 1);
             newNode.next = node.next;
             node.next = newNode;
-            newNode.value.correctAnswer = null;
             newNode.value.currentQuestion = null;
             newNode.value.testProperty = null;
+            newNode.value.correctAnswer = null;
         }
         this.length++;
     }

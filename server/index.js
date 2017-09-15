@@ -6,6 +6,9 @@ const { User, Question } = require('./models');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const BearerStrategy = require('passport-http-bearer').Strategy;
 const { LinkedList, printList, display } = require('./linked-list');
+const bodyParser = require('body-parser');
+
+const jsonParser = bodyParser.json();
 
 let secret = {
     CLIENT_ID: process.env.CLIENT_ID,
@@ -146,7 +149,7 @@ app.get(
             })
             .then(questionsArray => {
                 questionList = new LinkedList();
-                
+
                 for (let i = 0; i < questionsArray.length; i++) {
                     //inserts from res to linked list
                     questionList.insert(i, questionsArray[i]);
@@ -156,42 +159,37 @@ app.get(
                 if (questionList.get().currentQuestion === true) {
                     res.json(questionList.get());
                 }
-                
+
                 //what works:
-                    //going into redux state
-                    //rendered correctly
-                    //new properties of correctAnswer: null and currentQuestion are going into state
-                    //front end correct answer works
+                //going into redux state
+                //rendered correctly
+                //new properties of correctAnswer: null and currentQuestion are going into state
+                //front end correct answer works
 
                 //what next:
-                    //make a new question get or put
-                    //in the dispatch we want to send whetehr this answer was correct or not
-                    //want server to receive and move positions based off correctness
-                    //want server to call next question and rerender
-                    //front end next question rendering
+                //make a new question get or put
+                //in the dispatch we want to send whetehr this answer was correct or not
+                //want server to receive and move positions based off correctness
+                //want server to call next question and rerender
+                //front end next question rendering
 
-
-
-
-
-    // console.log(questionList.get(), 'THIS DISPLAYS OUR QUESTION LIST ITEM')
-                
-    console.log(questionList.display(questionList), 'THIS DISPLAYS OUR QUESTION LIST IN FULL AT THE BEGGINING')
- 
+                // console.log(questionList.get(), 'THIS DISPLAYS OUR QUESTION LIST ITEM')
             })
             .catch(err => console.error(err));
     }
 );
 
-app.put('/api/questions/update', (req, res) => {
-    // questionList.get(0);
-    console.log(req, 'THIS IS THE REQ BODY');
-    // console.log('YOU HAVE MADE A PUT REQUEST', questionList);
-    res.json('asdf');
-})
+app.put('/api/questions/update', jsonParser, (req, res) => {
+    if (req.body.correctAnswer) {
+        questionList.insert(12, req.body);
+        questionList.remove(0);
+    } else {
+        questionList.insert(2, req.body);
+        questionList.remove(0);
+    }
 
-
-
+    res.json(questionList.get(0));
+});
 
 // Serve the built client
 app.use(express.static(path.resolve(__dirname, '../client/build')));

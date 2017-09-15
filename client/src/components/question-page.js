@@ -60,7 +60,7 @@ export class QuestionPage extends React.Component {
         // return (<div>loading...</div>);
         // }
         
-        if (this.props.questionsData.correctAnswer === null) {
+        if (this.props.questionsData) {
             // if (typeof this.props.answer === 'string') {
             // return <Spinner spinnerName="circle" noFadeIn />;
             
