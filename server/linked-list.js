@@ -16,13 +16,16 @@ class LinkedList {
         if (nthPosition == 0) {
             newNode.next = this.head;
             this.head = newNode;
+            newNode.value.correctAnswer = null;
+            newNode.value.currentQuestion = true;
         } else {
             // Find the node which we want to insert after
             const node = this._findNthElement(nthPosition - 1);
             newNode.next = node.next;
             node.next = newNode;
+            newNode.value.correctAnswer = null;
+            newNode.value.currentQuestion = null;
         }
-
         this.length++;
     }
 
@@ -66,6 +69,19 @@ class LinkedList {
 
         this.length--;
     }
+
+    // display(lst) {
+    //     let currNode = lst.head;
+    //     if (!currNode) {
+    //         return 'List is Empty';
+    //     }
+    //     while (!(currNode.next == null)) {
+    //         console.log(currNode.value);
+    //         currNode = currNode.next;
+    //     }
+    //     console.log(currNode.value);
+    // }
+    
 }
 
 //************************************************

@@ -144,12 +144,17 @@ app.get(
             })
             .then(questionsArray => {
                 const questionList = new LinkedList();
-
+                
                 for (let i = 0; i < questionsArray.length; i++) {
+                    //inserts from res to linked list
                     questionList.insert(i, questionsArray[i]);
+                
                 }
 
                 res.json(questionList.get(0));
+                console.log(questionList, 'THIS IS THE QUESTIONLIST')
+                // console.log(questionList.get(0), 'get')
+                console.log(questionList.display(questionList))
             })
             .catch(err => console.error(err));
     }
