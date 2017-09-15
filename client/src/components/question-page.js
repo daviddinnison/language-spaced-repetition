@@ -39,6 +39,8 @@ export class QuestionPage extends React.Component {
         if (userGuess === this.props.questionsData.answer) {
             alert ('you got it!')
             //SEND TRUE TO SERVER
+            this.props.questionsData.
+            this.props.dispatch(makeGuess());
             //userResponseTrue
             //ROUTE TO CORRECT ANSWER PAGE
             //GET NEXT QUESTION

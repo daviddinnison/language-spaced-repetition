@@ -52,8 +52,7 @@ export const mainReducer = (state = initialState, action) => {
         return Object.assign({}, state, { loading: true });
     } else if (action.type === MAKE_GUESS_SUCCESS) {
         return Object.assign({}, state, {
-            // questionsData: action.questions,
-            loading: false
+            questionsData: Object.assign({}, state.questionsData, {  })
         });  
     }
     else if (action.type === MAKE_GUESS_ERROR) {
