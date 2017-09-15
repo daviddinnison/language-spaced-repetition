@@ -109,20 +109,47 @@ app.get(
         })
 );
 
+// unique user doc has to have its unique questions, prob in linked list form
+//      if user's questions is empty, fill it up with the default questions, NOT linked list
+//      otherwise, serve up the questions one at a time, after instantiating the linked list
+
 app.get(
     '/api/questions',
     // passport.authenticate('bearer', { session: false }),
     (req, res) => {
-        Question.find()
-            .then(list => {
-                const questions = list[0].questionsData;
+        User.find({ googleId: '110530375003272794045' })
+            .then(user => {
+                return user[0].questions;
+            })
+            .then(questions => {
+                if (questions.length === 0) {
+                    return Question.find()
+                        .then(list => {
+                            return list[0].questionsData;
+                        })
+                        .then(questionArray => {
+                            return User.findOneAndUpdate(
+                                { googleId: '110530375003272794045' },
+                                { questions: questionArray },
+                                { new: true }
+                            );
+                        });
+                } else {
+                    return User.find({ googleId: '110530375003272794045' });
+                }
+            })
+            .then(result => {
+                const questionsArray = result[0].questions;
+                return questionsArray;
+            })
+            .then(questionsArray => {
                 const questionList = new LinkedList();
 
-                for (let i = 0; i < questions.length; i++) {
-                    questionList.insert(i, questions[i]);
+                for (let i = 0; i < questionsArray.length; i++) {
+                    questionList.insert(i, questionsArray[i]);
                 }
 
-                res.json(questionList.head.value).status(200);
+                res.json(questionList.get(0));
             })
             .catch(err => console.error(err));
     }

@@ -4,6 +4,7 @@ const userSchema = mongoose.Schema({
     googleId: { type: String, required: true },
     accessToken: { type: String, required: true },
     displayName: { type: String },
+    questions: { type: Array }
 });
 
 const questionSchema = mongoose.Schema({

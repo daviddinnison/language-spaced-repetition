@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const { User, Question } = require('../models');
+const { LinkedList } = require('../linked-list');
 
 const app = express();
 
@@ -43,10 +44,13 @@ module.exports = {
     closeServer
 };
 
-Question.find()
-    .then(questions => {
-        console.log('LOOK HERE', questions[0].questionsData);
-    })
-    .catch(err => console.error(err));
+// unique user doc has to have its unique questions, prob in linked list form
+//      if user's questions is empty, fill it up with the default questions
+//      otherwise, serve up the questions one at a time
 
-// console.log(JSON.stringify(test.questionsData.length, null, 2));
+const testList = new LinkedList;
+
+testList.insert(0, 'zero')
+testList.insert(1, 'one')
+
+console.log('LOOK HERE', testList.get(0))
