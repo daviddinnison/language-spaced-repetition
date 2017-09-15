@@ -1,6 +1,10 @@
 .header {
-    background-color: red;
+    background-color: #355C7D;
     color: white;
     padding: 20px;
+}
+
+.logout-button {
+    color: #FC624D;
 }
 
