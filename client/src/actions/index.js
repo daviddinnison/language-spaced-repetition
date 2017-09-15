@@ -18,9 +18,9 @@ export const loginUserError = message => ({
     message
 });
 
-export const LOGOUT_USER = 'LOGOUT_USER';
-export const logoutUser = message => ({
-    type: LOGOUT_USER
+export const LOG_USER_OUT = 'LOG_USER_OUT';
+export const logUserOut = message => ({
+    type: LOG_USER_OUT
 });
 
 export const logUserIn = accessToken => dispatch => {

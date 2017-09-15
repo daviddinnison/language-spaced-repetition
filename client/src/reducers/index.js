@@ -2,7 +2,7 @@ import {
     LOGIN_USER_REQUEST,
     LOGIN_USER_SUCCESS,
     LOGIN_USER_ERROR,
-    LOGOUT_USER,
+    LOG_USER_OUT,
     GET_QUESTIONS_REQUEST,
     GET_QUESTIONS_SUCCESS,
     GET_QUESTIONS_ERROR,
@@ -31,11 +31,11 @@ export const mainReducer = (state = initialState, action) => {
             loading: false,
             error: action.message
         });
-    } else if (action.type === LOGOUT_USER) {
-        return {
+    } else if (action.type === LOG_USER_OUT) {
+        return  Object.assign({}, state, {
             currentUser: null,
             loggedIn: false
-        };
+        });
     } else if (action.type === GET_QUESTIONS_REQUEST) {
         return Object.assign({}, state, { loading: true });
     } else if (action.type === GET_QUESTIONS_SUCCESS) {
