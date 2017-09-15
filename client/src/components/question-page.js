@@ -41,7 +41,6 @@ export class QuestionPage extends React.Component {
             //userResponseTrue
             //ROUTE TO CORRECT ANSWER PAGE
             //GET NEXT QUESTION
-            
         } else {
             alert('nope')
             //SEND FALSE

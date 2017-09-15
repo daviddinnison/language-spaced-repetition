@@ -6,8 +6,9 @@ import {
     GET_QUESTIONS_REQUEST,
     GET_QUESTIONS_SUCCESS,
     GET_QUESTIONS_ERROR,
-    MAKE_GUESS
-    
+    MAKE_GUESS_REQUEST,
+    MAKE_GUESS_SUCCESS,
+    MAKE_GUESS_ERROR
   } from "../actions";
 
   const initialState = {
@@ -47,10 +48,18 @@ export const mainReducer = (state = initialState, action) => {
             loading: false,
             error: action.message
         });
-    } else if (action.type === MAKE_GUESS) {
+    } else if (action.type === MAKE_GUESS_REQUEST) {
+        return Object.assign({}, state, { loading: true });
+    } else if (action.type === MAKE_GUESS_SUCCESS) {
         return Object.assign({}, state, {
-            // loading: false,
-            answer: action.answer
+            // questionsData: action.questions,
+            loading: false
+        });  
+    }
+    else if (action.type === MAKE_GUESS_ERROR) {
+        return Object.assign({}, state, {
+            loading: false,
+            error: action.message
         });
     }
     return state;

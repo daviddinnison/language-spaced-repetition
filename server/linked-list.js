@@ -18,6 +18,7 @@ class LinkedList {
             this.head = newNode;
             newNode.value.correctAnswer = null;
             newNode.value.currentQuestion = true;
+            newNode.value.testProperty = null;
         } else {
             // Find the node which we want to insert after
             const node = this._findNthElement(nthPosition - 1);
@@ -25,6 +26,7 @@ class LinkedList {
             node.next = newNode;
             newNode.value.correctAnswer = null;
             newNode.value.currentQuestion = null;
+            newNode.value.testProperty = null;
         }
         this.length++;
     }

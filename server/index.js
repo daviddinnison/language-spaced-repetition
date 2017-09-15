@@ -148,11 +148,17 @@ app.get(
                 for (let i = 0; i < questionsArray.length; i++) {
                     //inserts from res to linked list
                     questionList.insert(i, questionsArray[i]);
-                
                 }
 
-                res.json(questionList.get(0));
-                console.log(questionList.display(questionList), 'THIS DISPLAYS OUR QUESTION LIST IN FULL')
+                //check to see what is currentQuestion and display it
+                if (questionList.get().currentQuestion === true) {
+                    res.json(questionList.get());
+                }
+                
+    // console.log(questionList.get(), 'THIS DISPLAYS OUR QUESTION LIST ITEM')
+                
+    console.log(questionList.display(questionList), 'THIS DISPLAYS OUR QUESTION LIST IN FULL')
+ 
             })
             .catch(err => console.error(err));
     }
