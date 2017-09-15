@@ -113,6 +113,8 @@ app.get(
 //      if user's questions is empty, fill it up with the default questions, NOT linked list
 //      otherwise, serve up the questions one at a time, after instantiating the linked list
 
+let questionList;
+
 app.get(
     '/api/questions',
     passport.authenticate('bearer', { session: false }),
@@ -143,7 +145,7 @@ app.get(
                 return questionsArray;
             })
             .then(questionsArray => {
-                const questionList = new LinkedList();
+                questionList = new LinkedList();
                 
                 for (let i = 0; i < questionsArray.length; i++) {
                     //inserts from res to linked list
@@ -174,12 +176,22 @@ app.get(
 
     // console.log(questionList.get(), 'THIS DISPLAYS OUR QUESTION LIST ITEM')
                 
-    console.log(questionList.display(questionList), 'THIS DISPLAYS OUR QUESTION LIST IN FULL')
+    console.log(questionList.display(questionList), 'THIS DISPLAYS OUR QUESTION LIST IN FULL AT THE BEGGINING')
  
             })
             .catch(err => console.error(err));
     }
 );
+
+app.put('/api/questions/update', (req, res) => {
+    // questionList.get(0);
+    console.log(req, 'THIS IS THE REQ BODY');
+    // console.log('YOU HAVE MADE A PUT REQUEST', questionList);
+    res.json('asdf');
+})
+
+
+
 
 // Serve the built client
 app.use(express.static(path.resolve(__dirname, '../client/build')));

@@ -72,17 +72,6 @@ class LinkedList {
         this.length--;
     }
 
-    display(lst) {
-        let currNode = lst.head;
-        if (!currNode) {
-            return 'List is Empty';
-        }
-        while (!(currNode.next == null)) {
-            console.log(currNode.value);
-            currNode = currNode.next;
-        }
-        console.log(currNode.value);
-    }
     
 }
 
