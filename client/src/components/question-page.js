@@ -18,6 +18,7 @@ export class QuestionPage extends React.Component {
         // console.log(this.props.questionsData[0].answer, 'questionsData answer')
         const accessToken = Cookies.get('accessToken');
         this.props.dispatch(getQuestions(accessToken));
+        // console.log(this.props)
     }
 
     render() {
@@ -55,12 +56,17 @@ export class QuestionPage extends React.Component {
     }
 
     renderQuestions() {
+        // if(this.props.loading === true) {
+        // return (<div>loading...</div>);
+        // }
+        
         if (this.props.questionsData.correctAnswer === null) {
             // if (typeof this.props.answer === 'string') {
             // return <Spinner spinnerName="circle" noFadeIn />;
             
             //alg
-            console.log(this.props.questionsData)
+            // console.log(this.props.questionsData)
+            console.log(this.props)
 
             return (
             <div className="question-container">
@@ -104,12 +110,12 @@ export class QuestionPage extends React.Component {
     }
 
 }
-
 const mapStateToProps = function(state) {
     return {
         currentUser: state.currentUser,
         questionsData: state.questionsData,
-        answer: state.answer
+        answer: state.answer,
+        loading: state.loading
     };
 };
 

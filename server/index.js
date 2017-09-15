@@ -155,6 +155,23 @@ app.get(
                     res.json(questionList.get());
                 }
                 
+                //what works:
+                    //going into redux state
+                    //rendered correctly
+                    //new properties of correctAnswer: null and currentQuestion are going into state
+                    //front end correct answer works
+
+                //what next:
+                    //make a new question get or put
+                    //in the dispatch we want to send whetehr this answer was correct or not
+                    //want server to receive and move positions based off correctness
+                    //want server to call next question and rerender
+                    //front end next question rendering
+
+
+
+
+
     // console.log(questionList.get(), 'THIS DISPLAYS OUR QUESTION LIST ITEM')
                 
     console.log(questionList.display(questionList), 'THIS DISPLAYS OUR QUESTION LIST IN FULL')
