@@ -56,15 +56,13 @@ export class QuestionPage extends React.Component {
                         className="guess-form"
                         onSubmit={e => this.makeGuess(e)}
                     >
-                        <label className="question-ask" htmlFor="userGuess">
-                            Word in Croatian:{' '}
-                        </label>
-                        <p>{this.props.questionsData.question}</p>
+
+                        <p className="croatian-question">{this.props.questionsData.question}</p>
                         <input
                             type="text"
                             name="guess-input"
                             required
-                            placeholder="word in English"
+                            placeholder="enter word in English"
                             id="userGuess"
                             ref={input => (this.userGuess = input)}
                         />
@@ -78,7 +76,8 @@ export class QuestionPage extends React.Component {
         if (this.props.questionsData.correctAnswer === true) {
             return (
                 <div className="question-container">
-                    <h1>correct</h1>
+                    <h1 className="response correct">Good job!</h1>
+                    <p>Seems you have it down. We won't ask you for a while.</p>
                     <button className="next-button"  onClick={e => this.updateQuestions(e)}>
                             Next
                     </button>
@@ -88,9 +87,10 @@ export class QuestionPage extends React.Component {
         if (this.props.questionsData.correctAnswer === false) {
             return (
                 <div className="question-container">
-                    <h1>incorrect</h1>
-                    <p>{this.props.questionsData.question}</p>
-                    <p>Correct answer: {this.props.questionsData.answer}</p>
+                    <h1 className="response incorrect">incorrect</h1>
+                    <p className="croatian-question">{this.props.questionsData.question}</p>
+                    <p>The correct answer is: {this.props.questionsData.answer}</p>
+                    <p>Study up and we'll ask again soon.</p>
                     <button className="next-button"  onClick={e => this.updateQuestions(e)}>
                             Next
                     </button>

@@ -1,11 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import flag from './styles/croatia-flag.svg';
+
 import { loginUserRequest } from '../actions';
 
 import './styles/login-page.css';
 
+
+
 export class LoginPage extends React.Component {    
+    
     loginSubmit(event) {
         event.preventDefault();
         this.props.dispatch(loginUserRequest());
@@ -19,10 +24,10 @@ export class LoginPage extends React.Component {
                 <h1>Learn Croatian</h1>
                 <h2>Pick up a new skill with repetition</h2>
             </div>
-            <a href={'/api/auth/google'}>Login with Google</a>;
-            {/* <form onSubmit={e => this.loginSubmit(e)}>
-                <input className="login-button" type="submit" value="Go to Google" />
-            </form> */}
+            <a href={'/api/auth/google'} className="login-button">Login with Google</a>;
+            <div className="info">
+                <p>Standard Croatian is the official language of the Republic of Croatia. There are 5.5 million Croatian speakers worldwide.</p>
+            </div>
         </div>
         );
     }

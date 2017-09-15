@@ -1,15 +1,31 @@
 .landing-header {
-    background-color: red;
+    background-color: #355C7D;
     color: white;
     padding: 100px;
     text-align: center;
 }
 
+.info {
+    background-color: white;
+    margin: 20px auto;
+    padding: 50px;
+    width: 60%;
+}
+
+
 .login-button {
-    background-color: #46C646;
+    background-color: #FC624D;
+    border: none;
     display: block;
     color: white;
     margin: 40px auto;
     padding: 10px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color .5s;
     width: 300px;
+}
+
+.login-button:hover { 
+    background-color: #CA301B;
 }
