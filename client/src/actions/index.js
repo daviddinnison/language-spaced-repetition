@@ -96,9 +96,8 @@ export const makeGuessRequest = () => ({
 });
 
 export const MAKE_GUESS_SUCCESS = 'MAKE_GUESS_SUCCESS';
-export const makeGuessSuccess = guess => ({
-    type: MAKE_GUESS_SUCCESS,
-    guess
+export const makeGuessSuccess = () => ({
+    type: MAKE_GUESS_SUCCESS
 });
 
 export const MAKE_GUESS_ERROR = 'MAKE_GUESS_ERROR';

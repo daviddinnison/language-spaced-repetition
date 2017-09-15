@@ -110,6 +110,7 @@ app.get(
         res.json({
             googleId: req.user.googleId
         })
+        .catch(err => console.error(err))
 );
 
 // unique user doc has to have its unique questions, prob in linked list form
