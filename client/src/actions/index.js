@@ -48,7 +48,6 @@ export const logUserIn = accessToken => dispatch => {
         });
 };
 
-
 //GETTING GUESTIONS
 export const GET_QUESTIONS_REQUEST = 'GET_QUESTIONS_REQUEST';
 export const getQuestionsRequest = () => ({
@@ -88,41 +87,49 @@ export const getQuestions = accessToken => dispatch => {
         });
 };
 
-
-//MAKE GUESS
-export const MAKE_GUESS_REQUEST = 'MAKE_GUESS_REQUEST';
-export const makeGuessRequest = () => ({
-    type: MAKE_GUESS_REQUEST
+export const GUESS_CORRECT = 'GUESS_CORRECT';
+export const guessCorrect = () => ({
+    type: GUESS_CORRECT
 });
 
-export const MAKE_GUESS_SUCCESS = 'MAKE_GUESS_SUCCESS';
-export const makeGuessSuccess = () => ({
-    type: MAKE_GUESS_SUCCESS
+export const GUESS_WRONG = 'GUESS_WRONG';
+export const guessWrong = () => ({
+    type: GUESS_WRONG
 });
 
-export const MAKE_GUESS_ERROR = 'MAKE_GUESS_ERROR';
-export const makeGuessError = message => ({
-    type: MAKE_GUESS_ERROR,
-    message
+// UPDATE QUESTION
+export const UPDATE_QUESTION_SUCCESS = 'UPDATE_QUESTION_SUCCESS';
+export const updateQuestionSuccess = nextQuestion => ({
+    type: UPDATE_QUESTION_SUCCESS,
+    nextQuestion
 });
 
-export const makeGuess = accessToken => dispatch => {
-    dispatch(makeGuessRequest());
-    fetch('/api/questions', {
+// don't forget auth
+export const updateQuestion = () => (dispatch, getState) => { // this is to circumvent the issue where the state is modified, but we can't pass in a property of that updated state until a re-render happens, and the re-render won't happen in time
+    const currentQuestion = getState().questionsData;
+    const options = {
         headers: {
-            Authorization: `Bearer ${accessToken}`
-        }
-    })
+            // Authorization: `Bearer ${accessToken}`,
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+        method: 'PUT',
+        body: JSON.stringify(currentQuestion)
+    };
+
+    // dispatch(updateQuestionRequest());
+    fetch('/api/questions/update', options)
         .then(res => {
             if (!res.ok) {
                 throw new Error(res.statusText);
             }
             return res.json();
         })
-        .then(questions => {
-            dispatch(makeGuessSuccess(questions));
+        .then(question => {
+            dispatch(updateQuestionSuccess(question));
         })
         .catch(err => {
-            dispatch(makeGuessError(err));
+            console.error(err);
+            // dispatch(updateQuestionError(err));
         });
 };

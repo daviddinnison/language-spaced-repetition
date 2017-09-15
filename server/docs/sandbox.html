@@ -1,0 +1,30 @@
+<script>
+    const testObj = {
+        hello: 'there',
+        you: 'are pretty'
+    }
+
+    const options = {
+        headers: {
+            // Authorization: `Bearer ${accessToken}`,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        method: 'put',
+        body: JSON.stringify(testObj)
+    };
+
+    fetch('http://localhost:3001/api/questions/update', options)
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(res.statusText);
+            }
+            return res.json();
+        })
+        .then(question => {
+            console.log(question);
+        })
+        .catch(err => {
+            console.error(err);
+        });
+</script>

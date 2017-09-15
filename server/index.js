@@ -110,7 +110,7 @@ app.get(
         res.json({
             googleId: req.user.googleId
         })
-        .catch(err => console.error(err))
+        // .catch(err => console.error(err))
 );
 
 // unique user doc has to have its unique questions, prob in linked list form
@@ -187,7 +187,6 @@ app.put('/api/questions/update', jsonParser, (req, res) => {
         questionList.insert(2, req.body);
         questionList.remove(0);
     }
-
     res.json(questionList.get(0));
 });
 

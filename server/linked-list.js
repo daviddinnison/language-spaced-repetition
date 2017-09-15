@@ -13,7 +13,7 @@ class LinkedList {
             value
         };
 
-        if (nthPosition == 0) {
+        if (nthPosition === 0) {
             newNode.next = this.head;
             this.head = newNode;
             newNode.value.currentQuestion = true;

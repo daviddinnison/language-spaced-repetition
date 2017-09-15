@@ -6,17 +6,17 @@ import {
     GET_QUESTIONS_REQUEST,
     GET_QUESTIONS_SUCCESS,
     GET_QUESTIONS_ERROR,
-    MAKE_GUESS_REQUEST,
-    MAKE_GUESS_SUCCESS,
-    MAKE_GUESS_ERROR
-  } from "../actions";
+    GUESS_CORRECT,
+    GUESS_WRONG,
+    UPDATE_QUESTION_SUCCESS
+} from '../actions';
 
-  const initialState = {
+const initialState = {
     currentUser: null,
     loading: false,
     error: null,
     questionsData: [{}]
-  };
+};
 
 export const mainReducer = (state = initialState, action) => {
     if (action.type === LOGIN_USER_REQUEST) {
@@ -48,18 +48,20 @@ export const mainReducer = (state = initialState, action) => {
             loading: false,
             error: action.message
         });
-    } else if (action.type === MAKE_GUESS_REQUEST) {
-        return Object.assign({}, state, { loading: true });
-    } else if (action.type === MAKE_GUESS_SUCCESS) {
+    } else if (action.type === GUESS_CORRECT) {
         return Object.assign({}, state, {
-            questionsData: Object.assign({}, state.questionsData, {  })
-        });  
-    }
-    else if (action.type === MAKE_GUESS_ERROR) {
-        return Object.assign({}, state, {
-            loading: false,
-            error: action.message
+            questionsData: Object.assign({}, state.questionsData, {
+                correctAnswer: true
+            })
         });
+    } else if (action.type === GUESS_WRONG) {
+        return Object.assign({}, state, {
+            questionsData: Object.assign({}, state.questionsData, {
+                correctAnswer: false
+            })
+        });
+    } else if (action.type === UPDATE_QUESTION_SUCCESS) {
+        return Object.assign({}, state, { questionsData: action.nextQuestion });
     }
     return state;
 };

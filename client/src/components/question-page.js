@@ -4,7 +4,13 @@ import { connect } from 'react-redux';
 
 import Header from './header';
 
-import { getQuestions, makeGuess } from '../actions';   
+import {
+    getQuestions,
+    makeGuess,
+    guessCorrect,
+    guessWrong,
+    updateQuestion
+} from '../actions';
 
 import './styles/question-page.css';
 
@@ -21,64 +27,54 @@ export class QuestionPage extends React.Component {
         // console.log(this.props)
     }
 
-    render() {
-        // const questions = this.state.questions.map((question, index) => (
-        //     <li key={index}>{question}</li>
-        // ));
-
-        // return <ul className="question-list">{questions}</ul>;
-        return <p>hello</p>;
-    }
-
     makeGuess(event) {
         event.preventDefault();
         let userGuess = this.userGuess.value;
-        console.log(userGuess)
-        //CHECK ANSWER WITH CORRECT ANSWER IN STATE AND SEND BOOLEAN BACK TO SERVER
-        //checkUserResponse
         if (userGuess === this.props.questionsData.answer) {
-            alert ('you got it!')
-            //SEND TRUE TO SERVER
-            this.props.questionsData.
-            this.props.dispatch(makeGuess());
-            //userResponseTrue
-            //ROUTE TO CORRECT ANSWER PAGE
-            //GET NEXT QUESTION
+            // alert('you got it!');
+            this.props.dispatch(guessCorrect());
         } else {
-            alert('nope')
-            //SEND FALSE
-            //userResponseFalse
-            //ROUTE TO CORRECT ANSWER PAGE
-            //GET NEXT QUESTION
+            // alert('nope');
+            this.props.dispatch(guessWrong());
         }
-        //getNextQuestion
-
-
-        // this.props.dispatch(makeGuess(answer));
+        this.props.dispatch(updateQuestion());
     }
 
     renderQuestions() {
         // if(this.props.loading === true) {
         // return (<div>loading...</div>);
         // }
-        
+
         if (this.props.questionsData) {
             // if (typeof this.props.answer === 'string') {
             // return <Spinner spinnerName="circle" noFadeIn />;
-            
+
             //alg
             // console.log(this.props.questionsData)
-            console.log(this.props)
 
             return (
-            <div className="question-container">
-                <form className="guess-form" onSubmit={e => this.makeGuess(e)}>
-                    <label className="question-ask" htmlFor="userGuess">Word in Croatian: </label>
-                    <p>{this.props.questionsData.question}</p>
-                    <input type="text" name="guess-input" required placeholder="word in English" id="userGuess" ref={input => (this.userGuess = input)}></input>
-                    <button type="submit" className="guess-button">Submit answer</button>
-                </form>
-            </div>
+                <div className="question-container">
+                    <form
+                        className="guess-form"
+                        onSubmit={e => this.makeGuess(e)}
+                    >
+                        <label className="question-ask" htmlFor="userGuess">
+                            Word in Croatian:{' '}
+                        </label>
+                        <p>{this.props.questionsData.question}</p>
+                        <input
+                            type="text"
+                            name="guess-input"
+                            required
+                            placeholder="word in English"
+                            id="userGuess"
+                            ref={input => (this.userGuess = input)}
+                        />
+                        <button type="submit" className="guess-button">
+                            Submit answer
+                        </button>
+                    </form>
+                </div>
             );
         }
         // if (this.props.answer === true) {
@@ -97,20 +93,19 @@ export class QuestionPage extends React.Component {
         // }
     }
 
-    render() {        
+    render() {
         return (
             <div className="question-page">
-                <Header/>
+                <Header />
                 {this.renderQuestions()}
             </div>
         );
-    
-        let answer = this.userGuess.value;
-        console.log(answer);
 
-        this.props.dispatch(makeGuess(answer));
+        // let answer = this.userGuess.value;
+        // console.log(answer);
+
+        // this.props.dispatch(makeGuess(answer));
     }
-
 }
 const mapStateToProps = function(state) {
     return {
