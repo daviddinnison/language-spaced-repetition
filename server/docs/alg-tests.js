@@ -3,6 +3,7 @@ class LinkedList {
         this.length = 0;
         this.head = null;
     }
+
     insert(nthPosition, value) {
         if (nthPosition < 0 || nthPosition > this.length) {
             throw new Error('Index error');
@@ -15,11 +16,10 @@ class LinkedList {
         if (nthPosition == 0) {
             newNode.next = this.head;
             this.head = newNode;
-        }
-        else {
+        } else {
             // Find the node which we want to insert after
             const node = this._findNthElement(nthPosition - 1);
-            newNode.next = node.next; 
+            newNode.next = node.next;
             node.next = newNode;
         }
 
@@ -29,15 +29,15 @@ class LinkedList {
     //this is another way of finding things when you don't have the nth item which in most cases you don't
     _findItem(item) {
         let node = this.head;
-        while(node && node.value != item){
+        while (node && node.value != item) {
             node = node.next;
         }
         return node;
     }
     //----------------------------
-   _findNthElement(nthElement) {
+    _findNthElement(nthElement) {
         let node = this.head;
-        for (let i=0; i<nthElement; i++) {
+        for (let i = 0; i < nthElement; i++) {
             node = node.next;
         }
         return node;
@@ -58,8 +58,7 @@ class LinkedList {
 
         if (nthElement == 0) {
             this.head = this.head.next;
-        }
-        else {
+        } else {
             // Find the node before the one we want to remove
             const node = this._findNthElement(nthElement - 1);
             node.next = node.next.next;
@@ -67,15 +66,14 @@ class LinkedList {
 
         this.length--;
     }
-    
 }
-//************************************************
 
+//************************************************
 //You can send the list to this function but if you send the head, that will be
 //good enough since you can follow the next point of head to see what the list is
-function display(lst){
+function display(lst) {
     let currNode = lst.head;
-    if(!currNode){
+    if (!currNode) {
         return 'List is Empty';
     }
     while (!(currNode.next == null)) {
@@ -87,20 +85,19 @@ function display(lst){
 
 function findPrevious(lst, item) {
     let currNode = lst.head;
-    while (!(currNode.next == null) && (currNode.next.value != item)) {
+    while (!(currNode.next == null) && currNode.next.value != item) {
         currNode = currNode.next;
     }
     return currNode;
 }
+
 //size of the list
-function size(lst){
+function size(lst) {
     let counter = 0;
     let currNode = lst.head;
-    if(!currNode){
+    if (!currNode) {
         return counter;
-    }
-    else
-        counter++;
+    } else counter++;
     while (!(currNode.next == null)) {
         counter++;
         currNode = currNode.next;
@@ -108,37 +105,52 @@ function size(lst){
     return counter;
 }
 
-
-
 function printList(head) {
-        console.log(`I am going to print the list ->>>>`);
-        let current = head;
-        while (current != null) {
-            console.log(current.value + " -> ");
-            current = current.next;
-        }
-        console.log();
+    console.log('I am going to print the list ->>>>');
+    let current = head;
+    while (current !== null) {
+        console.log(current.value + ' -> ');
+        current = current.next;
+    }
+    console.log();
 }
 
 let questionList = new LinkedList();
 
+const testQuestions = [
+    {
+        position: 1,
+        question: 'how do you say hello?'
+    },
+    {
+        position: 2,
+        question: 'how do you say goodbye?'
+    },
+    {
+        position: 3,
+        question: 'how do you say you are hot?'
+    }
+];
 
+for (let i=0; i<testQuestions.length; i++) {
+    questionList.insert(i, testQuestions[i]);
+}
 
 //BACKEND
-    //get questions
-    //put them in user document
-    //get questions from user doc into linked lsit
+//get questions
+//put them in user document
+//get questions from user doc into linked lsit
 
 //QUESTIONS----------------------
 
 //when get request is made, should insert each element into list in order of position
-    //adds currentQuestion and correctAnswer: null keys
-    //if position 1, make current question = true. everything else is false. current question true means this is what will be displayed
+//adds currentQuestion and correctAnswer: null keys
+//if position 1, make current question = true. everything else is false. current question true means this is what will be displayed
 
 //if question answered correct (correctAnswer:true)
-    // make the position shift to the last node + 1 and double nValue (maybe display as multiplier on front end?)
+// make the position shift to the last node + 1 and double nValue (maybe display as multiplier on front end?)
 
 //if question answered incorrect (correctAnswer: false)
-    // make the position shift + 2 and double nValue (maybe display as multiplier on front end?), move others behind it position + 1
+// make the position shift + 2 and double nValue (maybe display as multiplier on front end?), move others behind it position + 1
 
 //.next method will mark the next position as currentQuestion: true and display

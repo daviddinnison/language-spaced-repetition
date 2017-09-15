@@ -1,8 +1,8 @@
-const obj1 = {
-    loading: false,
-    name: 'mike'
-};
+const {LinkedList, printList, display} = require('../linked-list');
 
-const newObj = Object.assign({}, obj1, { loading: true, name: 'biff' });
+const testList = new LinkedList;
 
-console.log(newObj);
+testList.insert(0, 'zero')
+testList.insert(1, 'one')
+
+display(testList)

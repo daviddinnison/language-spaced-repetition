@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const { User, Question } = require('./models');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const BearerStrategy = require('passport-http-bearer').Strategy;
+const { LinkedList, printList, display } = require('./linked-list');
 
 let secret = {
     CLIENT_ID: process.env.CLIENT_ID,
@@ -108,18 +109,21 @@ app.get(
         })
 );
 
-
 app.get(
     '/api/questions',
-    //auth
     // passport.authenticate('bearer', { session: false }),
     (req, res) => {
         Question.find()
-            .then(questions => {
-                console.log(questions[0].questionsData)
-                return questions[0].questionsData;
+            .then(list => {
+                const questions = list[0].questionsData;
+                const questionList = new LinkedList();
+
+                for (let i = 0; i < questions.length; i++) {
+                    questionList.insert(i, questions[i]);
+                }
+
+                res.json(questionList.head.value).status(200);
             })
-            .then(questions => res.json(questions))
             .catch(err => console.error(err));
     }
 );
