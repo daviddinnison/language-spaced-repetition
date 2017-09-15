@@ -117,7 +117,6 @@ app.get(
 //      otherwise, serve up the questions one at a time, after instantiating the linked list
 
 let questionList;
-
 app.get(
     '/api/questions',
     passport.authenticate('bearer', { session: false }),
