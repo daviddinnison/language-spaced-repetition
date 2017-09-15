@@ -45,10 +45,15 @@
 .guess-button:hover, .next-button:hover { 
     background-color: #CA301B;
 }
-.correct {
+.correct-response {
     color: #1AB5C9;
 }
 
-.incorrect {
-    color: #2F1AC9;
+
+
+.checkmark, .incorrect {
+    display: block;
+    height: 50px;
+    margin: 20px auto;
+    width: 50px;
 }

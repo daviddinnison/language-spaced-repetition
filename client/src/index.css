@@ -1,7 +1,8 @@
 body {
   /* background-color: #F5F5F5; */
   background-color: #FFEAEA;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 1px;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
 }

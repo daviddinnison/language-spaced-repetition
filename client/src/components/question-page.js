@@ -13,6 +13,8 @@ import {
 } from '../actions';
 
 import './styles/question-page.css';
+import checkmark from'./styles/checkmark.svg';
+import incorrect from'./styles/incorrect.png';
 
 export class QuestionPage extends React.Component {
     constructor(props) {
@@ -76,7 +78,8 @@ export class QuestionPage extends React.Component {
         if (this.props.questionsData.correctAnswer === true) {
             return (
                 <div className="question-container">
-                    <h1 className="response correct">Good job!</h1>
+                    <h1 className="correct-response">Good job!</h1>
+                    <img  src={checkmark} alt="correct answer" className="checkmark"/>
                     <p>Seems you have it down. We won't ask you for a while.</p>
                     <button className="next-button"  onClick={e => this.updateQuestions(e)}>
                             Next
@@ -87,7 +90,7 @@ export class QuestionPage extends React.Component {
         if (this.props.questionsData.correctAnswer === false) {
             return (
                 <div className="question-container">
-                    <h1 className="response incorrect">incorrect</h1>
+                    <img  src={incorrect} alt="incorrect answer" className="incorrect"/>
                     <p className="croatian-question">{this.props.questionsData.question}</p>
                     <p>The correct answer is: {this.props.questionsData.answer}</p>
                     <p>Study up and we'll ask again soon.</p>

@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import flag from './styles/croatia-flag.svg';
 
 import { loginUserRequest } from '../actions';
 
 import './styles/login-page.css';
+import flag from'./styles/croatia-flag.svg';
+import map from'./styles/croatia-map.jpg';
 
 
 
@@ -27,6 +28,9 @@ export class LoginPage extends React.Component {
             <a href={'/api/auth/google'} className="login-button">Login with Google</a>;
             <div className="info">
                 <p>Standard Croatian is the official language of the Republic of Croatia. There are 5.5 million Croatian speakers worldwide.</p>
+                <p>Learn basic Croatian with repetition. If you get it wrong, we will ask more often. If you have it down, we will ask less frequently.</p>
+                <img  src={flag} alt="croatian flag" className="flag"/>
+                {/* <img  src={map} alt="croatian map" className="map"/> */}
             </div>
         </div>
         );

@@ -12,6 +12,11 @@
     width: 60%;
 }
 
+.info p {
+    /* letter-spacing: 1px; */
+    margin-bottom: 30px;
+}
+
 
 .login-button {
     background-color: #FC624D;
@@ -28,4 +33,20 @@
 
 .login-button:hover { 
     background-color: #CA301B;
+}
+
+.flag {
+    display: block;
+    height: 100px;
+    margin: 0px auto;
+    margin-bottom: 50px;
+    width: 200px;
+}
+
+.map {
+    display: block;
+    height: 329px;
+    margin: 0px auto;
+    margin-top: 50px;
+    width: 500px;
 }
