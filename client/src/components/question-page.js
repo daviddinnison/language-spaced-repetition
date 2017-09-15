@@ -14,8 +14,8 @@ export class QuestionPage extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props.questionsData, 'questionsData---------------------')
-        console.log(this.props.questionsData[0].answer, 'questionsData answer')
+        // console.log(this.props.questionsData, 'questionsData---------------------')
+        // console.log(this.props.questionsData[0].answer, 'questionsData answer')
         const accessToken = Cookies.get('accessToken');
         this.props.dispatch(getQuestions(accessToken));
     }
@@ -35,7 +35,7 @@ export class QuestionPage extends React.Component {
         console.log(userGuess)
         //CHECK ANSWER WITH CORRECT ANSWER IN STATE AND SEND BOOLEAN BACK TO SERVER
         //checkUserResponse
-        if (userGuess === this.props.questionsData[0].answer) {
+        if (userGuess === this.props.questionsData.answer) {
             alert ('you got it!')
             //SEND TRUE TO SERVER
             //userResponseTrue
@@ -56,7 +56,7 @@ export class QuestionPage extends React.Component {
     }
 
     renderQuestions() {
-        if (true === true) {
+        if (this.props.questionsData.correctAnswer === null) {
             // if (typeof this.props.answer === 'string') {
             // return <Spinner spinnerName="circle" noFadeIn />;
             
@@ -67,27 +67,27 @@ export class QuestionPage extends React.Component {
             <div className="question-container">
                 <form className="guess-form" onSubmit={e => this.makeGuess(e)}>
                     <label className="question-ask" htmlFor="userGuess">Word in Croatian: </label>
-                    <p>{this.props.questionsData[0].question}</p>
+                    <p>{this.props.questionsData.question}</p>
                     <input type="text" name="guess-input" required placeholder="word in English" id="userGuess" ref={input => (this.userGuess = input)}></input>
                     <button type="submit" className="guess-button">Submit answer</button>
                 </form>
             </div>
             );
         }
-        if (this.props.answer === true) {
-            return (
-                <div className="question-container">
-                    <h1>correct</h1>
-                </div>
-                );
-        }
-        if (this.props.answer === false) {
-            return (
-                <div className="question-container">
-                    <h1>incorrect</h1>
-                </div>
-                );
-        }
+        // if (this.props.answer === true) {
+        //     return (
+        //         <div className="question-container">
+        //             <h1>correct</h1>
+        //         </div>
+        //         );
+        // }
+        // if (this.props.answer === false) {
+        //     return (
+        //         <div className="question-container">
+        //             <h1>incorrect</h1>
+        //         </div>
+        //         );
+        // }
     }
 
     render() {        

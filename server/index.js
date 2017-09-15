@@ -152,9 +152,7 @@ app.get(
                 }
 
                 res.json(questionList.get(0));
-                console.log(questionList, 'THIS IS THE QUESTIONLIST')
-                // console.log(questionList.get(0), 'get')
-                console.log(questionList.display(questionList))
+                console.log(questionList.display(questionList), 'THIS DISPLAYS OUR QUESTION LIST IN FULL')
             })
             .catch(err => console.error(err));
     }
