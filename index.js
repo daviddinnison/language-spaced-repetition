@@ -3,7 +3,7 @@ const proxy = require('http-proxy-middleware');
 
 const app = express();
 const runServer = require('./server').runServer;
-const {PORT} = require('./config');
+// const {PORT} = require('./config');
 
 
 if (process.env.NODE_ENV === 'production') {

@@ -208,7 +208,7 @@ function runServer() {
         'mongodb://dev:dev@ds133094.mlab.com:33094/lang';
     mongoose.Promise = global.Promise;
     mongoose.connect(databaseUri).then(function() {
-        app.listen(3001, err => {
+        app.listen(process.env.PORT || 3001, err => {
             if (err) {
                 console.error(err);
                 return err;
