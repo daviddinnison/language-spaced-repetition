@@ -31,12 +31,14 @@ export class QuestionPage extends React.Component {
         event.preventDefault();
         let userGuess = this.userGuess.value;
         if (userGuess === this.props.questionsData.answer) {
-            // alert('you got it!');
             this.props.dispatch(guessCorrect());
         } else {
-            // alert('nope');
             this.props.dispatch(guessWrong());
         }
+        // this.props.dispatch(updateQuestion());
+    }
+
+    updateQuestions() {
         this.props.dispatch(updateQuestion());
     }
 
@@ -45,12 +47,8 @@ export class QuestionPage extends React.Component {
         // return (<div>loading...</div>);
         // }
 
-        if (this.props.questionsData) {
-            // if (typeof this.props.answer === 'string') {
-            // return <Spinner spinnerName="circle" noFadeIn />;
-
-            //alg
-            // console.log(this.props.questionsData)
+        if (this.props.questionsData.correctAnswer === null) {
+            console.log(this.props.questionsData)
 
             return (
                 <div className="question-container">
@@ -77,20 +75,28 @@ export class QuestionPage extends React.Component {
                 </div>
             );
         }
-        // if (this.props.answer === true) {
-        //     return (
-        //         <div className="question-container">
-        //             <h1>correct</h1>
-        //         </div>
-        //         );
-        // }
-        // if (this.props.answer === false) {
-        //     return (
-        //         <div className="question-container">
-        //             <h1>incorrect</h1>
-        //         </div>
-        //         );
-        // }
+        if (this.props.questionsData.correctAnswer === true) {
+            return (
+                <div className="question-container">
+                    <h1>correct</h1>
+                    <button className="next-button"  onClick={e => this.updateQuestions(e)}>
+                            Next
+                    </button>
+                </div>
+                );
+        }
+        if (this.props.questionsData.correctAnswer === false) {
+            return (
+                <div className="question-container">
+                    <h1>incorrect</h1>
+                    <p>{this.props.questionsData.question}</p>
+                    <p>Correct answer: {this.props.questionsData.answer}</p>
+                    <button className="next-button"  onClick={e => this.updateQuestions(e)}>
+                            Next
+                    </button>
+                </div>
+                );
+        }
     }
 
     render() {
