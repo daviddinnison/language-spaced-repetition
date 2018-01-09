@@ -181,7 +181,7 @@ app.get(
 
 app.put('/api/questions/update', jsonParser, (req, res) => {
     if (req.body.correctAnswer) {
-        questionList.insert(12, req.body);
+        questionList.insert(3, req.body);
         questionList.remove(0);
     } else {
         questionList.insert(2, req.body);

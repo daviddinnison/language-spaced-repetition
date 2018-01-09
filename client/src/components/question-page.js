@@ -30,22 +30,14 @@ export class QuestionPage extends React.Component {
     makeGuess(event) {
         event.preventDefault();
         const acceptableAnswers = this.props.questionsData.answer;
-
-        console.log('acceptable answers.,....', acceptableAnswers);
         const userGuess = this.userGuess.value.toLowerCase();
-
-        console.log('userguess.....', userGuess)
-
         const correctAnswer = (acceptableAnswers.indexOf(userGuess) > -1);
 
-
-        console.log('corectansewr......',correctAnswer)
         if (correctAnswer) {
             this.props.dispatch(guessCorrect());
         } else {
             this.props.dispatch(guessWrong());
         }
-        // this.props.dispatch(updateQuestion());
     }
 
     updateQuestions() {
@@ -67,6 +59,7 @@ export class QuestionPage extends React.Component {
                         onSubmit={e => this.makeGuess(e)}
                     >
 
+                        <p>Hint: {this.props.questionsData.hint}</p>
                         <p className="croatian-question">{this.props.questionsData.question}</p>
                         <input
                             type="text"
@@ -100,7 +93,7 @@ export class QuestionPage extends React.Component {
                 <div className="question-container">
                     <img src={incorrect} alt="incorrect answer" className="incorrect" />
                     <p className="croatian-question">{this.props.questionsData.question}</p>
-                    <p>The correct answer is: {this.props.questionsData.answer}</p>
+                    <p>The correct answer is: {this.props.questionsData.answer[0]}</p>
                     <p>Study up and we'll ask again soon.</p>
                     <button className="next-button" onClick={e => this.updateQuestions(e)}>
                         Next
