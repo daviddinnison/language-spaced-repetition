@@ -6,20 +6,16 @@ import Header from './header';
 
 import {
     getQuestions,
-    makeGuess,
     guessCorrect,
     guessWrong,
     updateQuestion
 } from '../actions';
 
 import './styles/question-page.css';
-import checkmark from './styles/checkmark.svg';
-import incorrect from './styles/incorrect.png';
+import checkmark from './images/checkmark.svg';
+import incorrect from './images/incorrect.png';
 
 export class QuestionPage extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     componentDidMount() {
         const accessToken = Cookies.get('accessToken');

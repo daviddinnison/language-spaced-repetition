@@ -7,10 +7,6 @@ import LoginPage from './login-page';
 import { logUserIn } from '../actions';
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         const accessToken = Cookies.get('accessToken');
         this.props.dispatch(logUserIn(accessToken));

@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { loginUserRequest } from '../actions';
 
 import './styles/login-page.css';
-import flag from'./styles/croatia-flag.svg';
-import map from'./styles/croatia-map.jpg';
+import flag from'./images/croatia-flag.svg';
+
 
 
 
