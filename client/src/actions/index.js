@@ -80,6 +80,7 @@ export const getQuestions = accessToken => dispatch => {
             return res.json();
         })
         .then(questions => {
+            console.log('THIS WORKED')
             dispatch(getQuestionsSuccess(questions));
         })
         .catch(err => {

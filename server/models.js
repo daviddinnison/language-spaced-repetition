@@ -10,7 +10,8 @@ const userSchema = mongoose.Schema({
 const questionSchema = mongoose.Schema({
     questionsData: [{
         question: { type: String, required: true },
-        answer: { type: String, required: true },
+        
+        answer: { type: [String], index:true, required: true },
         nValue: { type: Number, required: true },
         position: { type: Number, required: true }
     }]

@@ -13,8 +13,8 @@ import {
 } from '../actions';
 
 import './styles/question-page.css';
-import checkmark from'./styles/checkmark.svg';
-import incorrect from'./styles/incorrect.png';
+import checkmark from './styles/checkmark.svg';
+import incorrect from './styles/incorrect.png';
 
 export class QuestionPage extends React.Component {
     constructor(props) {
@@ -22,17 +22,25 @@ export class QuestionPage extends React.Component {
     }
 
     componentDidMount() {
-        // console.log(this.props.questionsData, 'questionsData---------------------')
-        // console.log(this.props.questionsData[0].answer, 'questionsData answer')
         const accessToken = Cookies.get('accessToken');
         this.props.dispatch(getQuestions(accessToken));
-        // console.log(this.props)
+        console.log(this.props.questionsData, 'questions DATA')
     }
 
     makeGuess(event) {
         event.preventDefault();
-        let userGuess = this.userGuess.value;
-        if (userGuess === this.props.questionsData.answer) {
+        const acceptableAnswers = this.props.questionsData.answer;
+
+        console.log('acceptable answers.,....', acceptableAnswers);
+        const userGuess = this.userGuess.value.toLowerCase();
+
+        console.log('userguess.....', userGuess)
+
+        const correctAnswer = (acceptableAnswers.indexOf(userGuess) > -1);
+
+
+        console.log('corectansewr......',correctAnswer)
+        if (correctAnswer) {
             this.props.dispatch(guessCorrect());
         } else {
             this.props.dispatch(guessWrong());
@@ -50,7 +58,7 @@ export class QuestionPage extends React.Component {
         // }
 
         if (this.props.questionsData.correctAnswer === null) {
-            console.log(this.props.questionsData)
+            console.log(this.props.questionsData, 'THE QUESTION DATA')
 
             return (
                 <div className="question-container">
@@ -79,26 +87,26 @@ export class QuestionPage extends React.Component {
             return (
                 <div className="question-container">
                     <h1 className="correct-response">Good job!</h1>
-                    <img  src={checkmark} alt="correct answer" className="checkmark"/>
+                    <img src={checkmark} alt="correct answer" className="checkmark" />
                     <p>Seems you have it down. We won't ask you for a while.</p>
-                    <button className="next-button"  onClick={e => this.updateQuestions(e)}>
-                            Next
+                    <button className="next-button" onClick={e => this.updateQuestions(e)}>
+                        Next
                     </button>
                 </div>
-                );
+            );
         }
         if (this.props.questionsData.correctAnswer === false) {
             return (
                 <div className="question-container">
-                    <img  src={incorrect} alt="incorrect answer" className="incorrect"/>
+                    <img src={incorrect} alt="incorrect answer" className="incorrect" />
                     <p className="croatian-question">{this.props.questionsData.question}</p>
                     <p>The correct answer is: {this.props.questionsData.answer}</p>
                     <p>Study up and we'll ask again soon.</p>
-                    <button className="next-button"  onClick={e => this.updateQuestions(e)}>
-                            Next
+                    <button className="next-button" onClick={e => this.updateQuestions(e)}>
+                        Next
                     </button>
                 </div>
-                );
+            );
         }
     }
 
@@ -116,7 +124,7 @@ export class QuestionPage extends React.Component {
         // this.props.dispatch(makeGuess(answer));
     }
 }
-const mapStateToProps = function(state) {
+const mapStateToProps = function (state) {
     return {
         currentUser: state.currentUser,
         questionsData: state.questionsData,

@@ -39,6 +39,7 @@ export const mainReducer = (state = initialState, action) => {
     } else if (action.type === GET_QUESTIONS_REQUEST) {
         return Object.assign({}, state, { loading: true });
     } else if (action.type === GET_QUESTIONS_SUCCESS) {
+        console.log('REDUCER QUESTIONS GET SUCCESS', action.questions)
         return Object.assign({}, state, {
             questionsData: action.questions,
             loading: false
