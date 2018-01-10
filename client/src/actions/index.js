@@ -41,6 +41,7 @@ export const logUserIn = accessToken => dispatch => {
             return res.json();
         })
         .then(user => {
+            console.log(user, 'THIS IS WHAT THE USER LOOKS LIKE WHEN LOGGED IN>>>')
             dispatch(loginUserSuccess(user.googleId));
         })
         .catch(err => {

@@ -20,7 +20,7 @@ export class QuestionPage extends React.Component {
     componentDidMount() {
         const accessToken = Cookies.get('accessToken');
         this.props.dispatch(getQuestions(accessToken));
-        console.log(this.props.questionsData, 'questions DATA')
+        // console.log(this.props.questionsData, 'questions DATA')
     }
 
     makeGuess(event) {
@@ -46,7 +46,7 @@ export class QuestionPage extends React.Component {
         // }
 
         if (this.props.questionsData.correctAnswer === null) {
-            console.log(this.props.questionsData, 'THE QUESTION DATA')
+            // console.log(this.props.questionsData, 'THE QUESTION DATA')
 
             return (
                 <div className="question-container">
@@ -106,11 +106,6 @@ export class QuestionPage extends React.Component {
                 {this.renderQuestions()}
             </div>
         );
-
-        // let answer = this.userGuess.value;
-        // console.log(answer);
-
-        // this.props.dispatch(makeGuess(answer));
     }
 }
 const mapStateToProps = function (state) {
