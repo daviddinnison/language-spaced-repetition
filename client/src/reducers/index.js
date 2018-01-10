@@ -13,6 +13,7 @@ import {
 
 const initialState = {
     currentUser: null,
+    accessToken: null,
     loading: false,
     error: null,
     questionsData: [{}]
@@ -32,7 +33,7 @@ export const mainReducer = (state = initialState, action) => {
             error: action.message
         });
     } else if (action.type === LOG_USER_OUT) {
-        return  Object.assign({}, state, {
+        return Object.assign({}, state, {
             currentUser: null,
             loggedIn: false
         });

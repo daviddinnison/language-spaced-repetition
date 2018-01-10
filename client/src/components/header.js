@@ -9,9 +9,6 @@ import { logUserOut } from '../actions';
 export class Header extends React.Component {
   logUserOut(e) {
     e.preventDefault();
-    console.log('you logged out')
-    // location.reload('/');
-    window.location.replace("/");
     Cookies.remove('accessToken');
     this.props.dispatch(logUserOut());
   }
