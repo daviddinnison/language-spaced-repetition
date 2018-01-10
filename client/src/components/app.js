@@ -2,7 +2,7 @@ import React from 'react';
 import * as Cookies from 'js-cookie';
 import { connect } from 'react-redux';
 
-import QuestionPage from './question-page';
+import Dashboard from './dashboard';
 import LoginPage from './login-page';
 import { logUserIn } from '../actions';
 
@@ -16,7 +16,7 @@ class App extends React.Component {
         if (!this.props.currentUser) {
             return <LoginPage />;
         }
-        return <QuestionPage />;
+        return <Dashboard />;
     }
 }
 

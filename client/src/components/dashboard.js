@@ -1,34 +1,51 @@
 import React from 'react';
 import * as Cookies from 'js-cookie';
 import { connect } from 'react-redux';
+import { Link  } from 'react-router-dom';
+
 
 import Header from './header';
 
+import {
+    getQuestions,
+    guessCorrect,
+    guessWrong,
+    updateQuestion
+} from '../actions';
+
 import './styles/question-page.css';
-import checkmark from'./styles/checkmark.svg';
-import incorrect from'./styles/incorrect.png';
+import checkmark from './images/checkmark.svg';
+import incorrect from './images/incorrect.png';
 
 export class Dashboard extends React.Component {
-    constructor(props) {
-        super(props);
+
+    componentDidMount() {
+        const accessToken = Cookies.get('accessToken');
+        this.props.dispatch(getQuestions(accessToken));
     }
 
+    renderResults() {
+       
+      
+            return (
+                <div className="question-container">
+                    <p>test</p>
+                    {/* <Link to="/questions">Ace Pomodoro</Link> */}
+                </div>
+            );
+       
+    }
 
     render() {
         return (
             <div className="question-page">
                 <Header />
-                {this.renderQuestions()}
+                {this.renderResults()}
             </div>
         );
-
-        // let answer = this.userGuess.value;
-        // console.log(answer);
-
-        // this.props.dispatch(makeGuess(answer));
     }
 }
-const mapStateToProps = function(state) {
+const mapStateToProps = function (state) {
     return {
         currentUser: state.currentUser,
         questionsData: state.questionsData,
