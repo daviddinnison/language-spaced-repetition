@@ -2,6 +2,7 @@ import React from 'react';
 import * as Cookies from 'js-cookie';
 import { connect } from 'react-redux';
 
+
 import './styles/header.css';
 
 import { logUserOut } from '../actions';

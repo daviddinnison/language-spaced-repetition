@@ -17,11 +17,11 @@ import incorrect from './images/incorrect.png';
 
 export class QuestionPage extends React.Component {
 
-    componentDidMount() {
-        const accessToken = Cookies.get('accessToken');
-        this.props.dispatch(getQuestions(accessToken));
-        // console.log(this.props.questionsData, 'questions DATA')
-    }
+    // componentDidMount() {
+    //     const accessToken = Cookies.get('accessToken');
+    //     this.props.dispatch(getQuestions(accessToken));
+    //     // console.log(this.props.questionsData, 'questions DATA')
+    // }
 
     makeGuess(event) {
         event.preventDefault();

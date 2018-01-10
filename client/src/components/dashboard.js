@@ -14,8 +14,6 @@ import {
 } from '../actions';
 
 import './styles/question-page.css';
-import checkmark from './images/checkmark.svg';
-import incorrect from './images/incorrect.png';
 
 export class Dashboard extends React.Component {
 
@@ -25,12 +23,11 @@ export class Dashboard extends React.Component {
     }
 
     renderResults() {
-       
-      
+            
             return (
                 <div className="question-container">
                     <p>test</p>
-                    {/* <Link to="/questions">Ace Pomodoro</Link> */}
+                    <Link to="/questions">Questions</Link>
                 </div>
             );
        
