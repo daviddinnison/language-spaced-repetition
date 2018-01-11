@@ -8,25 +8,44 @@ import './styles/header.css';
 import { logUserOut } from '../actions';
 
 export class Header extends React.Component {
-  logUserOut(e) {
-    e.preventDefault();
+  logUserOut(event) {
+    event.preventDefault();
     Cookies.remove('accessToken');
     window.location.replace("/");
-    // this.props.dispatch(logUserOut());
+    this.props.dispatch(logUserOut());
   }
-    render() {
+
+  conditionalLogout() {
+    console.log("LOGGED IN HEADER PROPS", this.props)
+    if (this.props.loggedIn === true) {
       return (
-        <div className="header">
-          <h1>Croatian Buddy</h1>
-          <a href=""className="logout-button" onClick={e => this.logUserOut(e)}>Logout</a>
-        </div>
+        <a href="" onClick={e => this.logUserOut(e)}>Logout</a>
+      );
+    } else if (this.props.loggedIn === false) {
+      return (
+        <p>didnt work</p>
       );
     }
   }
-  
-  const mapStateToProps = state => ({
-    currentUser: state.currentUser,
-    loggedIn: state.loggedIn
-  });
 
-export default connect()(Header);
+  render() {
+    return (
+      <header>
+        <h1>Croatian Buddy</h1>
+        <ul>
+          <li>learning</li>
+          <li>practice</li>
+          <li>communication</li>
+        </ul>
+        {this.conditionalLogout()}
+      </header>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  currentUser: state.currentUser,
+  loggedIn: state.loggedIn
+});
+
+export default connect(mapStateToProps)(Header);

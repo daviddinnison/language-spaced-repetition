@@ -1,10 +1,33 @@
-.header {
-    background-color: #355C7D;
-    color: white;
-    padding: 20px;
+header {
+    background-color: rgba(53, 92, 125, 0.9);
+    color: #f5f5f5;
+    padding: 10px;
+    text-align: center;
 }
 
-.logout-button {
+header h1 {
+    font-family: 'Francois One', sans-serif;
+    margin: 0px;
+}
+
+header ul {
+    margin: 5px auto;
+    text-align: center;
+}
+
+header li {
+    border-right: 1px solid #f5f5f5;
+    color: #f5f5f5;
+    display: inline-block;
+    margin-right: 10px;
+    padding: 3px 10px 3px 0px;
+}
+
+header li:last-child {
+    border-right: none;
+}
+
+header a {
     color: #FC624D;
+    display: inline-block;
 }
-

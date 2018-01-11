@@ -13,6 +13,7 @@ import {
 
 const initialState = {
     currentUser: null,
+    loggedIn: null,
     accessToken: null,
     loading: false,
     error: null,
@@ -23,8 +24,10 @@ export const mainReducer = (state = initialState, action) => {
     if (action.type === LOGIN_USER_REQUEST) {
         return Object.assign({}, state, { loading: true });
     } else if (action.type === LOGIN_USER_SUCCESS) {
+        console.log('LOGIN USER SUCCESS')
         return Object.assign({}, state, {
             currentUser: action.userId,
+            loggedIn: true,
             loading: false // does this need to be here? update all depending on joe's response
         });
     } else if (action.type === LOGIN_USER_ERROR) {
@@ -35,7 +38,7 @@ export const mainReducer = (state = initialState, action) => {
     } else if (action.type === LOG_USER_OUT) {
         return Object.assign({}, state, {
             currentUser: null,
-            loggedIn: false
+            loggedIn: null
         });
     } else if (action.type === GET_QUESTIONS_REQUEST) {
         return Object.assign({}, state, { loading: true });

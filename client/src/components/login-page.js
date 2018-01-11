@@ -6,9 +6,7 @@ import { loginUserRequest } from '../actions';
 
 import './styles/login-page.css';
 import flag from './images/croatia-flag.svg';
-
-
-
+import Header from './header';
 
 export class LoginPage extends React.Component {
 
@@ -18,19 +16,11 @@ export class LoginPage extends React.Component {
         // /api/auth/google
     }
     render() {
+        console.log("LOGGED IN PROPS", this.props)
         // console.log(state, 'THIS IS THE STATE IN LOGIN PAGE')
         return (
             <div className="login-page">
-                <div className="landing-header">
-                    {/* <img src={flag} alt="croatian flag" className="flag" /> */}
-
-                    <h1>Croatian Buddy</h1>
-                    <ul className="info-ul">
-                        <li>learning</li>
-                        <li>practice</li>
-                        <li>communication</li>
-                    </ul>
-                </div>
+                <Header />
                 <div className="info">
                     <h2>Dobrodošli! Welcome!</h2>
                     <p>Standard Croatian is the official language of the Republic of Croatia. There are 5.5 million Croatian speakers worldwide.</p>
@@ -44,7 +34,8 @@ export class LoginPage extends React.Component {
 
 const mapStateToProps = function (state) {
     return {
-        currentUser: state.currentUser
+        currentUser: state.currentUser,
+        loggedIn: state.loggedIn
     }
 };
 

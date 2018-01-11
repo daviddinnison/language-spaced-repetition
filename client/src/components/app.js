@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import * as Cookies from 'js-cookie';
 import { connect } from 'react-redux';
@@ -20,13 +18,12 @@ class App extends React.Component {
     render() {
         return (
             <Router>
-
+                
                 <main>
                     <Route exact path="/" component={Gateway} />
                     <Route exact path="/login" component={LoginPage} />
                     <Route exact path="/dashboard" component={Dashboard} />
                     <Route exact path="/questions" component={QuestionPage} />
-                    <Route exact path="/header" component={Header} />
                     <Route exact path="/test" component={Test} />
                 </main>
 
@@ -36,7 +33,8 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    loggedIn: state.loggedIn
 });
 
 export default connect(mapStateToProps)(App);
