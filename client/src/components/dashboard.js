@@ -17,12 +17,12 @@ import './styles/question-page.css';
 
 export class Dashboard extends React.Component {
 
-    componentDidMount() {
-        const accessToken = Cookies.get('accessToken');
+    // componentDidMount() {
+    //     const accessToken = Cookies.get('accessToken');
 
-        console.log('DISPATCH GET QUESTIONS IN DASHBOARD COMPONENT');
-        this.props.dispatch(getQuestions(accessToken));
-    }
+    //     console.log('DISPATCH GET QUESTIONS IN DASHBOARD COMPONENT');
+    //     this.props.dispatch(getQuestions(accessToken));
+    // }
 
     renderResults() {
             // console.log('THE NEW QUESTION DATA', this.props.questionsData)

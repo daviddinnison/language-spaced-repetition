@@ -11,13 +11,14 @@ export class Header extends React.Component {
   logUserOut(e) {
     e.preventDefault();
     Cookies.remove('accessToken');
-    this.props.dispatch(logUserOut());
+    window.location.replace("/");
+    // this.props.dispatch(logUserOut());
   }
     render() {
       return (
         <div className="header">
           <h1>Learn Croatian</h1>
-          <a href="#"className="logout-button" onClick={e => this.logUserOut(e)}>Logout</a>
+          <a href=""className="logout-button" onClick={e => this.logUserOut(e)}>Logout</a>
         </div>
       );
     }

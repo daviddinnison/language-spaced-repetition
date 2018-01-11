@@ -1,6 +1,7 @@
 import React from 'react';
 import * as Cookies from 'js-cookie';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Header from './header';
 
@@ -16,12 +17,13 @@ import checkmark from './images/checkmark.svg';
 import incorrect from './images/incorrect.png';
 
 export class QuestionPage extends React.Component {
+    
 
-    // componentDidMount() {
-    //     const accessToken = Cookies.get('accessToken');
-    //     this.props.dispatch(getQuestions(accessToken));
-    //     // console.log(this.props.questionsData, 'questions DATA')
-    // }
+    componentDidMount() {
+        const accessToken = Cookies.get('accessToken');
+        this.props.dispatch(getQuestions(accessToken));
+        // console.log(this.props.questionsData, 'questions DATA')
+    }
 
     makeGuess(event) {
         event.preventDefault();
@@ -50,12 +52,16 @@ export class QuestionPage extends React.Component {
 
             return (
                 <div className="question-container">
+                    <Link to={`/dashboard`} className="back-button">
+                        go back
+                </Link>
+                
                     <form
                         className="guess-form"
                         onSubmit={e => this.makeGuess(e)}
                     >
-
-                        <p>Hint: {this.props.questionsData.hint}</p>
+                        
+                        
                         <p className="croatian-question">{this.props.questionsData.question}</p>
                         <input
                             type="text"
@@ -69,6 +75,8 @@ export class QuestionPage extends React.Component {
                             Submit answer
                         </button>
                     </form>
+                    <p>{this.props.questionsData.type}</p>
+                    <p>Hint: {this.props.questionsData.hint}</p>
                 </div>
             );
         }
@@ -103,6 +111,7 @@ export class QuestionPage extends React.Component {
         return (
             <div className="question-page">
                 <Header />
+
                 {this.renderQuestions()}
             </div>
         );
