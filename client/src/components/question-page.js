@@ -75,7 +75,7 @@ export class QuestionPage extends React.Component {
                         onSubmit={e => this.makeGuess(e)}
                     >
 
-                        <p className="question-type">{this.props.questionsData.type}</p>
+                            <p className="question-type">{this.props.questionsData.type}</p>
                         <p className="croatian-question">{this.props.questionsData.question}</p>
                         <input
                             type="text"
