@@ -1,0 +1,102 @@
+{
+    "_id": {
+        "$oid": "59b9900f748dc947a65e6fc4"
+    },
+    "questionsData": [
+        {
+            "question": "Zdravo!",
+            "type": "greeting",
+            "answer": [
+                "hi",
+                "hello"
+            ],
+            "hint": "A greeting to someone.",
+            "nValue": 1,
+            "position": 1
+        },
+        {
+            "question": "Prijatelj",
+            "type": "relationships",
+            "answer": [
+                "friend",
+                "mate",
+                "pal",
+                "buddy",
+                "bud",
+                "companion",
+                "homie",
+                "associate"
+            ],
+            "hint": "A person you spend time with.",
+            "nValue": 1,
+            "position": 2
+        },
+        {
+            "question": "Nogomet",
+            "type": "sport",
+            "answer": [
+                "soccer",
+                "football"
+            ],
+            "hint": "A popular sport with goal scoring.",
+            "nValue": 1,
+            "position": 3
+        },
+        {
+            "question": "Liječnik",
+            "type": "profession",
+            "answer": [
+                "doctor",
+                "physician",
+                "medic"
+            ],
+            "hint": "Takes care of people who are ill.",
+            "nValue": 1,
+            "position": 4
+        },
+        {
+            "question": "Bicikl",
+            "type": "transportation",
+            "answer": [
+                "bicycle",
+                "bike"
+            ],
+            "hint": "A two wheeled vehicle without a motor.",
+            "nValue": 1,
+            "position": 5
+        },
+        {
+            "question": "Ptica",
+            "type": "animal",
+            "answer": [
+                "bird"
+            ],
+            "hint": "Flys around and chirps.",
+            "nValue": 1,
+            "position": 6
+        },
+        {
+            "question": "Bolnica",
+            "type": "place",
+            "answer": [
+                "hospital",
+                "clinic"
+            ],
+            "hint": "Where you go if you are sick.",
+            "nValue": 1,
+            "position": 7
+        },
+        {
+            "question": "Mačka",
+            "type": "animal",
+            "answer": [
+                "cat",
+                "a cat",
+                "feline"
+            ],
+            "hint": "Has whiskers and hates water.",
+            "nValue": 1,
+            "position": 8
+        }
+    ]
+}

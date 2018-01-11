@@ -1,3 +1,7 @@
+.back-button {
+    color: red;
+}
+
 .question-container {
     background-color: white;
     margin: 50px auto;

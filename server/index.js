@@ -110,7 +110,7 @@ app.get(
         res.json({
             googleId: req.user.googleId
         })
-        // .catch(err => console.error(err))
+    // .catch(err => console.error(err))
 );
 
 // unique user doc has to have its unique questions, prob in linked list form
@@ -145,9 +145,11 @@ app.get(
             })
             .then(result => {
                 const questionsArray = result[0].questions;
+                // console.log('Questions array.....', questionsArray)
                 return questionsArray;
             })
             .then(questionsArray => {
+               
                 questionList = new LinkedList();
 
                 for (let i = 0; i < questionsArray.length; i++) {
@@ -181,7 +183,7 @@ app.get(
 
 app.put('/api/questions/update', jsonParser, (req, res) => {
     if (req.body.correctAnswer) {
-        questionList.insert(3, req.body);
+        questionList.insert(8, req.body);
         questionList.remove(0);
     } else {
         questionList.insert(2, req.body);
@@ -207,7 +209,7 @@ function runServer() {
         global.databaseUri ||
         'mongodb://dev:dev@ds133094.mlab.com:33094/lang';
     mongoose.Promise = global.Promise;
-    mongoose.connect(databaseUri).then(function() {
+    mongoose.connect(databaseUri).then(function () {
         app.listen(process.env.PORT || 3001, err => {
             if (err) {
                 console.error(err);

@@ -1,0 +1,73 @@
+[
+    {
+        "questionsInside": [
+            {
+                "type": "simple",
+                "data": [
+                    {
+                        "position": 1,
+                        "nValue": 1,
+                        "hint": "A greeting to someone.",
+                        "answer": [
+                            "hi",
+                            "hello"
+                        ],
+                        "question": "Bok"
+                    },
+                    {
+                        "position": 2,
+                        "nValue": 1,
+                        "hint": "Asking how someone prefers to be called.",
+                        "answer": [
+                            "whats your name?",
+                            "who are you?",
+                            "what is your name?"
+                        ],
+                        "question": "Kako se zovete?"
+                    },
+                    {
+                        "position": 3,
+                        "nValue": 1,
+                        "hint": "Asking how someone is feeling.",
+                        "answer": [
+                            "how are you?"
+                        ],
+                        "question": "Kako ste?"
+                    }
+                ]
+            },
+            {
+                "type": "animals",
+                "data": [
+                    {
+                        "position": 1,
+                        "nValue": 1,
+                        "hint": "It barks.",
+                        "answer": [
+                            "dog"
+                        ],
+                        "question": "Perro"
+                    },
+                    {
+                        "position": 2,
+                        "nValue": 1,
+                        "hint": "It has whiskers.",
+                        "answer": [
+                            "cat"
+                        ],
+                        "question": "Gato"
+                    },
+                    {
+                        "position": 3,
+                        "nValue": 1,
+                        "hint": "Winnie the pooh is one.",
+                        "answer": [
+                            "bear"
+                        ],
+                        "question": "Oso"
+                    }
+                ]
+            }
+        ]
+    }
+]

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+import { Link, Router, Route, IndexRoute, browserHistory  } from 'react-router-dom';
 
 import { loginUserRequest } from '../actions';
 
@@ -30,6 +30,7 @@ export class LoginPage extends React.Component {
                 <p>Standard Croatian is the official language of the Republic of Croatia. There are 5.5 million Croatian speakers worldwide.</p>
                 <p>Learn basic Croatian with repetition. If you get it wrong, we will ask more often. If you have it down, we will ask less frequently.</p>
                 <img  src={flag} alt="croatian flag" className="flag"/>
+                {/* <Link to="/test">Free component test!</Link> */}
                 {/* <img  src={map} alt="croatian map" className="map"/> */}
             </div>
         </div>
