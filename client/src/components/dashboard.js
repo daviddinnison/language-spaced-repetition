@@ -19,16 +19,8 @@ export class Dashboard extends React.Component {
     renderResults() {
         // console.log('THE NEW QUESTION DATA', this.props.questionsData)
         return (
-            <div className="info">
+            <div className="info dashboard">
                 
-                <p>
-                    Learn some basic Croatian vocabulary with spaced repetition.
-                    You will see what type of word you are answering, and if you aren't sure you can get a hint.
-                    Get started below! 
-                    Like and share for a free iphone 4.
-
-                </p>
-                <p>Vocabulary you will learn:</p>
                 <ul>
                     <li>greetings</li>
                     <li>animals</li>
@@ -39,6 +31,13 @@ export class Dashboard extends React.Component {
                     <li>transportation</li>
 
                 </ul>
+                <p>
+                    Learn some basic Croatian vocabulary with spaced repetition.
+                    You will see what type of word you are answering, and if you aren't sure you can get a hint.
+                    Get started below! 
+                    Like and share for a free iphone 4.
+
+                </p>
                 <Link to="/questions" className="start-button">Learn Croatian</Link>
             </div>
         );

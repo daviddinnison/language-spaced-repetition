@@ -1,6 +1,5 @@
 .landing-header {
     background-color: #355C7D;
-    /* background: url("./../images/croatia.jpg") no-repeat center center fixed; */
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -8,6 +7,21 @@
     color: white;
     padding: 50px;
     text-align: center;
+}
+
+.info-ul {
+    margin: 30px auto;
+    text-align: center;
+}
+
+.info-ul li {
+    background: #C6C6C6;
+    border: 1px solid #626262;
+    box-shadow: 0px 1px 1px #626262;
+    color: #626262;
+    display: inline-block;
+    margin-right: 10px;
+    padding: 6px 10px;
 }
 
 .info {

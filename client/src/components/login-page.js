@@ -26,7 +26,11 @@ export class LoginPage extends React.Component {
                     
                     <h1>Croatian Buddy</h1>
                 </div>
-
+                <ul className="info-ul">
+                    <li>learning</li>
+                    <li>practice</li>
+                    <li>communication</li>
+                </ul>
                 <div className="info">
                     <h2>Dobrodošli! Welcome!</h2>
                     <p>Standard Croatian is the official language of the Republic of Croatia. There are 5.5 million Croatian speakers worldwide.</p>
