@@ -149,7 +149,7 @@ app.get(
                 return questionsArray;
             })
             .then(questionsArray => {
-                console.log(questionsArray, 'QUESTIONS ARRAY....')
+               
                 questionList = new LinkedList();
 
                 for (let i = 0; i < questionsArray.length; i++) {
@@ -183,7 +183,7 @@ app.get(
 
 app.put('/api/questions/update', jsonParser, (req, res) => {
     if (req.body.correctAnswer) {
-        questionList.insert(3, req.body);
+        questionList.insert(8, req.body);
         questionList.remove(0);
     } else {
         questionList.insert(2, req.body);
