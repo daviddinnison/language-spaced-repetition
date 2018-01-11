@@ -1,8 +1,21 @@
 body {
   /* background-color: #F5F5F5; */
+  background: url("./components/images/croatia.jpg") no-repeat center center fixed;
   background-color: #FFEAEA;
   font-family: 'Roboto', sans-serif;
   letter-spacing: 1px;
   margin: 0;
   padding: 0;
+}
+
+body:before {
+  content:"";
+  display:block;
+  position:fixed;
+  width:100%;
+  height:100%;
+  left:0;
+  top:0;
+  z-index:-1;
+  background-color: rgba(255, 255, 255, 0.6);
 }

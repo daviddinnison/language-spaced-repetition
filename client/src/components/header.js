@@ -17,7 +17,7 @@ export class Header extends React.Component {
     render() {
       return (
         <div className="header">
-          <h1>Learn Croatian</h1>
+          <h1>Croatian Buddy</h1>
           <a href=""className="logout-button" onClick={e => this.logUserOut(e)}>Logout</a>
         </div>
       );

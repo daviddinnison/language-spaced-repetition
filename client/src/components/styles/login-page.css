@@ -1,12 +1,19 @@
 .landing-header {
     background-color: #355C7D;
+    /* background: url("./../images/croatia.jpg") no-repeat center center fixed; */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     color: white;
-    padding: 100px;
+    padding: 50px;
     text-align: center;
 }
 
 .info {
     background-color: white;
+    border: 1px solid #E1E1DE;
+    box-shadow: 0px 3px 3px #E1E1DE;
     margin: 20px auto;
     padding: 50px;
     width: 60%;
@@ -16,7 +23,6 @@
     /* letter-spacing: 1px; */
     margin-bottom: 30px;
 }
-
 
 .login-button {
     background-color: #FC624D;
@@ -31,13 +37,21 @@
     width: 300px;
 }
 
-.login-button:hover { 
+.login-button:hover {
     background-color: #CA301B;
 }
 
 .flag {
     display: block;
     height: 100px;
+    margin: 0px auto;
+    margin-bottom: 50px;
+    width: 200px;
+}
+
+.croatia-img {
+    display: block;
+    height: auto;
     margin: 0px auto;
     margin-bottom: 50px;
     width: 200px;
