@@ -66,16 +66,16 @@ export class QuestionPage extends React.Component {
 
             return (
                 <div className="question-container">
-                    <Link to={`/dashboard`} className="back-button">
+                    {/* <Link to={`/dashboard`} className="back-button">
                         go back
-                </Link>
+                </Link> */}
 
                     <form
                         className="guess-form"
                         onSubmit={e => this.makeGuess(e)}
                     >
 
-
+                        <p className="question-type">{this.props.questionsData.type}</p>
                         <p className="croatian-question">{this.props.questionsData.question}</p>
                         <input
                             type="text"
@@ -89,8 +89,7 @@ export class QuestionPage extends React.Component {
                             Submit answer
                         </button>
                     </form>
-                    <p>{this.props.questionsData.type}</p>
-                    <button onClick={this.toggleHint}>Hint</button>
+                    <button onClick={this.toggleHint} className="hint-button">Hint</button>
                     {this.state.visible && <p>{this.props.questionsData.hint}</p>}
                 </div>
             );

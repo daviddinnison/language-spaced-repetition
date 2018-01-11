@@ -28,8 +28,8 @@ export class Dashboard extends React.Component {
             // console.log('THE NEW QUESTION DATA', this.props.questionsData)
             return (
                 <div className="question-container">
-                    <p>test</p>
-                    <Link to="/questions">Questions</Link>
+                    <p>Welcome! </p>
+                    <Link to="/questions">Learn Croatian</Link>
                 </div>
             );
        

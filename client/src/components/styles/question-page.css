@@ -10,11 +10,7 @@
     width: 400px;
 }
 
-
-
-
 .question-container input[type=text] {
-    margin-bottom: 20px;
     margin-top: 20px;
     padding-bottom: 10px;
     padding-top: 10px;
@@ -23,13 +19,11 @@
     width: 250px;
 }
 
-
-
 .croatian-question {
     font-size: 25px;
     font-style: italic;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin: 0px;
 }
 
 .guess-button, .next-button {
@@ -44,20 +38,49 @@
     transition: background-color .5s;
     width: 250px;
 }
-
-
 .guess-button:hover, .next-button:hover { 
     background-color: #CA301B;
 }
-.correct-response {
-    color: #1AB5C9;
+
+.hint-button {
+    background-color: #1CB6CA;
+    border: none;
+    cursor:pointer;
+    display: block;
+    color: white;
+    margin: 10px auto;
+    outline:none;
+    padding: 10px;
+    transition: background-color .5s;
+    width: 250px;
+}
+.hint-button:hover { 
+    background-color: #4EE8FC;
 }
 
 
+
+.correct-response {
+    color: #1AB5C9;
+}
 
 .checkmark, .incorrect {
     display: block;
     height: 50px;
     margin: 20px auto;
     width: 50px;
+}
+
+.question-type {
+    background-color: #F5F5F2;
+    border: 1px solid #E1E1DE;
+    box-shadow: 0px 1px 1px #E1E1DE;
+    color: #52686a;
+    display: inline-block;
+    padding: 5px 10px;
+}
+
+.hint-button {
+    display: block;
+    margin: 0px auto;
 }
