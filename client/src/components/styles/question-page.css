@@ -1,9 +1,5 @@
-.back-button {
-    color: red;
-}
-
 .question-container {
-    background-color: white;
+    background-color: #fff;
     border: 1px solid #E1E1DE;
     box-shadow: 0px 1px 1px #E1E1DE;
     margin: 20px auto;
@@ -12,23 +8,33 @@
     width: 400px;
 }
 
+.question-type {
+    background-color: #F5F5F2;
+    border: 1px solid #E1E1DE;
+    box-shadow: 0px 1px 1px #E1E1DE;
+    color: #52686a;
+    display: block;
+    margin: 0px auto;
+    padding: 5px 10px;
+    width: 120px;
+}
+
+.croatian-question {
+    font-size: 35px;
+    font-style: italic;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
 .question-container input[type=text] {
-    background-color: #F5F5F5;
-    border: none;
+    background-color: white;
+    border: 1px solid rgba(53, 92, 125);
     margin-top: 20px;
     margin-bottom: 10px;
     padding-bottom: 10px;
     padding-top: 10px;
-
     text-align: center;
     width: 250px;
-}
-
-.croatian-question {
-    font-size: 25px;
-    font-style: italic;
-    font-weight: bold;
-    margin-bottom: 20px;
 }
 
 .guess-button, .next-button {
@@ -48,13 +54,11 @@
 }
 
 .hint-button {
-    background-color: #94FFFF;
-    border: 1px solid #E1E1DE;
-    box-shadow: 0px 1px 1px #E1E1DE;
+    background-color: #4EE8FC;  
     border: none;
     cursor:pointer;
     display: block;
-    color: #006969;
+    color: black;
     margin: 10px auto;
     outline:none;
     padding: 10px;
@@ -62,10 +66,8 @@
     width: 250px;
 }
 .hint-button:hover { 
-    background-color: #4EE8FC;
+    background-color: #94FFFF;
 }
-
-
 
 .correct-response {
     color: #1AB5C9;
@@ -78,19 +80,6 @@
     width: 50px;
 }
 
-.question-type {
-    background-color: #F5F5F2;
-    border: 1px solid #E1E1DE;
-    box-shadow: 0px 1px 1px #E1E1DE;
-    color: #52686a;
-    display: block;
-    padding: 5px 10px;
-}
-
-.hint-button {
-    display: block;
-    margin: 0px auto;
-}
 
 @media only screen and (max-width: 768px) {
     .question-container {

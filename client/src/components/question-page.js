@@ -63,15 +63,8 @@ export class QuestionPage extends React.Component {
         // }
 
         if (this.props.questionsData.correctAnswer === null) {
-            // console.log(this.props.questionsData, 'THE QUESTION DATA')
-
             return (
                 <div className="question-container">
-                    {/* <Link to={`/dashboard`} className="back-button">
-                        go back
-                </Link> */}
-                    <button onClick={this.toggleHint} className="hint-button">Hint</button>
-
                     <form
                         className="guess-form"
                         onSubmit={e => this.makeGuess(e)}
@@ -91,6 +84,7 @@ export class QuestionPage extends React.Component {
                             Submit answer
                         </button>
                     </form>
+                    <button onClick={this.toggleHint} className="hint-button">Hint</button>
                     {this.state.visible && <p>{this.props.questionsData.hint}</p>}
                 </div>
             );
