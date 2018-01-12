@@ -12,6 +12,10 @@
     margin-bottom: 30px;
 }
 
+.login-page h2 {
+    font-family: 'Francois One', sans-serif;
+}
+
 .login-button {
     background-color: #FC624D;
     border: none;
@@ -36,18 +40,11 @@
     width: 100px;
 }
 
-.croatia-img {
-    display: block;
-    height: auto;
-    margin: 0px auto;
-    margin-bottom: 50px;
-    width: 200px;
-}
 
-.map {
-    display: block;
-    height: 329px;
-    margin: 0px auto;
-    margin-top: 50px;
-    width: 500px;
+/* MEDIA QUERIES */
+@media only screen and (max-width: 768px) {
+    .info {
+        padding: 5px;
+        width: 95%;
+    }
 }

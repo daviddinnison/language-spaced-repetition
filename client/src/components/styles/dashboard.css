@@ -1,16 +1,15 @@
-.dashboard ul {
-    margin: 30px auto;
-    text-align: center;
+
+.dashboard h2, h3 {
+    font-family: 'Francois One', sans-serif;
+    margin: 0px;
 }
 
-.dashboard li {
-    background: white;
-    border: 1px solid #626262;
-    box-shadow: 0px 1px 1px #626262;
-    color: #626262;
-    display: inline-block;
-    margin-right: 10px;
-    padding: 6px 10px;
+.dashboard h2 {
+    font-size: 20px;
+}
+
+.dashboard h3 {
+    font-size:17px;
 }
 
 .start-button {
@@ -29,3 +28,4 @@
 .start-button:hover { 
     background-color: #CA301B;
 }
+
