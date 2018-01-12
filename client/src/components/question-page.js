@@ -44,6 +44,7 @@ export class QuestionPage extends React.Component {
         const acceptableAnswers = this.props.questionsData.answer;
         const userGuess = this.userGuess.value.toLowerCase();
         const correctAnswer = (acceptableAnswers.indexOf(userGuess) > -1);
+        this.setState({ visible: false })
 
         if (correctAnswer) {
             this.props.dispatch(guessCorrect());
