@@ -21,10 +21,6 @@ export class Header extends React.Component {
       return (
         <a href="" onClick={e => this.logUserOut(e)}>Logout</a>
       );
-    } else if (this.props.loggedIn === false) {
-      return (
-        <p>didnt work</p>
-      );
     }
   }
 
@@ -32,12 +28,9 @@ export class Header extends React.Component {
     return (
       <header>
         <h1>Croatian Buddy</h1>
-        <ul>
-          <li>learning</li>
-          <li>practice</li>
-          <li>communication</li>
-        </ul>
-        {this.conditionalLogout()}
+        <div class="sub-head">
+          {this.conditionalLogout()}
+        </div>
       </header>
     );
   }

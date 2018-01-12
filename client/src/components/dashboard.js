@@ -3,7 +3,6 @@ import * as Cookies from 'js-cookie';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-
 import Header from './header';
 
 import {
