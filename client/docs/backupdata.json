@@ -5,7 +5,7 @@
     "questionsData": [
         {
             "question": "Zdravo!",
-            "type": "greeting",
+            "type": "phrases",
             "answer": [
                 "hi",
                 "hello"
@@ -43,14 +43,16 @@
             "position": 3
         },
         {
-            "question": "Liječnik",
-            "type": "profession",
+            "question": "Doviđenja",
+            "type": "phrases",
             "answer": [
-                "doctor",
-                "physician",
-                "medic"
+                "bye",
+                "goodbye",
+                "seeya",
+                "cya",
+                "good bye"
             ],
-            "hint": "Takes care of people who are ill.",
+            "hint": "What you say when you are leaving",
             "nValue": 1,
             "position": 4
         },
@@ -71,7 +73,7 @@
             "answer": [
                 "bird"
             ],
-            "hint": "Flys around and chirps.",
+            "hint": "Flies around and chirps.",
             "nValue": 1,
             "position": 6
         },
@@ -97,6 +99,30 @@
             "hint": "Has whiskers and hates water.",
             "nValue": 1,
             "position": 8
+        },
+        {
+            "question": "Liječnik",
+            "type": "profession",
+            "answer": [
+                "doctor",
+                "doc",
+                "physician",
+                "medic"
+            ],
+            "hint": "Diagnoses people who are sick.",
+            "nValue": 1,
+            "position": 9
+        },
+        {
+            "question": "Košarka",
+            "type": "sport",
+            "answer": [
+                "basketball",
+                "hoops"
+            ],
+            "hint": "Played with two hoops on a court.",
+            "nValue": 1,
+            "position": 10
         }
     ]
 }

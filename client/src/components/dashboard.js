@@ -27,7 +27,7 @@ export class Dashboard extends React.Component {
                 </p>
                 <h3>Vocabulary types:</h3>
                 <ul>
-                    <li>greetings</li>
+                    <li>phrases</li>
                     <li>animals</li>
                     <li>sports</li>
                     <li>professions</li>
