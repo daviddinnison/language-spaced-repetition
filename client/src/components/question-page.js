@@ -90,11 +90,14 @@ export class QuestionPage extends React.Component {
             );
         }
         if (this.props.questionsData.correctAnswer === true) {
+            const correctFeedback = ['Good job!', "You got it!", "Nice work!", "You're a natural!"]
+            const randomCorrectItem = correctFeedback[Math.floor(Math.random() * correctFeedback.length)];
+
             return (
                 <div className="question-container">
                     <h1 className="correct-response">Good job!</h1>
                     <img src={checkmark} alt="correct answer" className="checkmark" />
-                    <p>Seems you have it down. We won't ask you for a while.</p>
+                    {randomCorrectItem}
                     <button className="next-button" onClick={e => this.updateQuestions(e)}>
                         Next
                     </button>
@@ -102,12 +105,15 @@ export class QuestionPage extends React.Component {
             );
         }
         if (this.props.questionsData.correctAnswer === false) {
+            const incorrectFeedback = ['Try again!', "Better luck next time!", "Keep practicing!"]
+            const randomIncorrectItem = incorrectFeedback[Math.floor(Math.random() * incorrectFeedback.length)];
+
             return (
                 <div className="question-container">
                     <img src={incorrect} alt="incorrect answer" className="incorrect" />
                     <p className="croatian-question">{this.props.questionsData.question}</p>
                     <p>The correct answer is: {this.props.questionsData.answer[0]}</p>
-                    <p>Study up and we'll ask again soon.</p>
+                    {randomIncorrectItem}
                     <button className="next-button" onClick={e => this.updateQuestions(e)}>
                         Next
                     </button>
