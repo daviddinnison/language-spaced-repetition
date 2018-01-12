@@ -7,11 +7,6 @@ import LoginPage from './login-page';
 import { logUserIn } from '../actions';
 
 class Gateway extends React.Component {
-    // componentDidMount() {
-    //     const accessToken = Cookies.get('accessToken');
-    //     this.props.dispatch(logUserIn(accessToken));
-    // }
-
     render() {
         if (!this.props.currentUser) {
             return <LoginPage />;

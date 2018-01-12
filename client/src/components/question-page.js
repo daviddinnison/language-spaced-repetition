@@ -70,13 +70,14 @@ export class QuestionPage extends React.Component {
                     {/* <Link to={`/dashboard`} className="back-button">
                         go back
                 </Link> */}
+                    <button onClick={this.toggleHint} className="hint-button">Hint</button>
 
                     <form
                         className="guess-form"
                         onSubmit={e => this.makeGuess(e)}
                     >
 
-                            <p className="question-type">{this.props.questionsData.type}</p>
+                        <p className="question-type">{this.props.questionsData.type}</p>
                         <p className="croatian-question">{this.props.questionsData.question}</p>
                         <input
                             type="text"
@@ -90,7 +91,6 @@ export class QuestionPage extends React.Component {
                             Submit answer
                         </button>
                     </form>
-                    <button onClick={this.toggleHint} className="hint-button">Hint</button>
                     {this.state.visible && <p>{this.props.questionsData.hint}</p>}
                 </div>
             );

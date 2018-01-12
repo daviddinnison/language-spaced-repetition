@@ -1,7 +1,8 @@
 import React from 'react';
 import * as Cookies from 'js-cookie';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as  Router, Route } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory'
 import QuestionPage from './question-page';
 import Gateway from './gateway';
 import Dashboard from './dashboard';
@@ -17,8 +18,7 @@ class App extends React.Component {
     }
     render() {
         return (
-            <Router>
-                
+            <Router history={createHistory}>
                 <main>
                     <Route exact path="/" component={Gateway} />
                     <Route exact path="/login" component={LoginPage} />
