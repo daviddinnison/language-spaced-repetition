@@ -1,16 +1,31 @@
 header {
     background-color: rgba(53, 92, 125, 0.9);
-    color: #f5f5f5;
+    color: #fff;
     padding: 10px;
     text-align: center;
 }
 
 header h1 {
+    color: #fff;
     font-family: 'Francois One', sans-serif;
     margin: 0px;
 }
 
-header a {
+.home-link {
+    border-bottom: none;
+    text-decoration: none;
+    transition: border-bottom .1s;
+}
+
+.home-link:visited {
+    color: #fff;
+}
+
+.home-link:hover {
+    border-bottom: 2px solid #fff;
+}
+
+.logout-button {
     border: 1px solid #E1E1DE;
     color: #E1E1DE;
     font-size: 12px;
@@ -22,7 +37,7 @@ header a {
 }
 
 @media only screen and (max-width: 426px) {
-    header a {
+    .logout-button {
         padding: 4px;
         right: 8px;
     }
