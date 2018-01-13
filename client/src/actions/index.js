@@ -41,7 +41,7 @@ export const logUserIn = accessToken => dispatch => {
             return res.json();
         })
         .then(user => {
-            console.log(user, 'THIS IS WHAT THE USER LOOKS LIKE WHEN LOGGED IN>>>')
+
             dispatch(loginUserSuccess(user.googleId));
         })
         .catch(err => {
@@ -75,20 +75,15 @@ export const getQuestions = accessToken => dispatch => {
         }
     })
         .then(res => {
-
-            console.log('THERE SHOULD BE A RESPONSE', res);
             if (!res.ok) {
                 throw new Error(res.statusText);
             }
             return res.json();
         })
         .then(questions => {
-            console.log('QUESTIONS GET ACTION SUCCESS DATA', questions)
             dispatch(getQuestionsSuccess(questions));
         })
         .catch(err => {
-
-            console.log('ERROR IN GETQUIESTION', err);
             dispatch(getQuestionsError(err));
         });
 };

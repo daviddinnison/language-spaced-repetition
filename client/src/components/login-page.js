@@ -16,8 +16,6 @@ export class LoginPage extends React.Component {
         // /api/auth/google
     }
     render() {
-        console.log("LOGGED IN PROPS", this.props)
-        // console.log(state, 'THIS IS THE STATE IN LOGIN PAGE')
         return (
             <div className="login-page">
                 <Header />

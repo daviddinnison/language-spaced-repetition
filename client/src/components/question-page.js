@@ -35,7 +35,6 @@ export class QuestionPage extends React.Component {
     componentDidMount() {
         const accessToken = Cookies.get('accessToken');
         this.props.dispatch(getQuestions(accessToken));
-        // console.log(this.props.questionsData, 'questions DATA')
     }
 
 

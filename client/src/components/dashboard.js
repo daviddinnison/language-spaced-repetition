@@ -16,7 +16,6 @@ import './styles/dashboard.css';
 
 export class Dashboard extends React.Component {
     renderResults() {
-        // console.log('THE NEW QUESTION DATA', this.props.questionsData)
         return (
             <div className="info dashboard">
                 <h2>Welcome to the dashboard</h2>
