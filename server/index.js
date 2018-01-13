@@ -130,22 +130,28 @@ app.get(
                 if (questions.length === 0) {
                     return Question.find()
                         .then(list => {
-                            return list[0].questionsData;
-                        })
-                        .then(questionArray => {
+                            
                             return User.findOneAndUpdate(
                                 { googleId: req.user.googleId },
-                                { questions: questionArray },
+                                { questions:  list[0].questionsData },
                                 { new: true }
                             );
-                        });
+                        })
+                        
                 } else {
                     return User.find({ googleId: req.user.googleId });
                 }
             })
+            
             .then(result => {
-                const questionsArray = result[0].questions;
-                // console.log('Questions array.....', questionsArray)
+                let questionsArray
+                
+                //hack-fix for new user not returning data correctly
+                if(result.questions!=undefined) {
+                    questionsArray = result.questions;
+                } else {
+                    questionsArray = result[0].questions;
+                }
                 return questionsArray;
             })
             .then(questionsArray => {
