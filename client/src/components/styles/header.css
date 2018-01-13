@@ -13,6 +13,7 @@ header h1 {
 
 .home-link {
     border-bottom: none;
+    color: #fff;
     text-decoration: none;
     transition: border-bottom .1s;
 }
